@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.topguide.topguide.activity.TouristScreen">
+    tools:context="com.topguide.topguide.activity.Tourist_Activity">
 
 </android.support.constraint.ConstraintLayout>
