@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.topguide.topguide.R;
 
-public class TouristScreen extends AppCompatActivity {
+public class Tourist_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tourist_screen);
+        setContentView(R.layout.activity_tourist_);
     }
 }
