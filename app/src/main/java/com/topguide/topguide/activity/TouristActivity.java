@@ -34,7 +34,7 @@ public class TouristActivity extends AppCompatActivity {
             }
         });
 
-        tourButton = (Button) findViewById(R.id.button1);
+        tourButton = (Button) findViewById(R.id.searchToursButton);
         tourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 String str = tourText.getText().toString();
