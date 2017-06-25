@@ -15,17 +15,23 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class TouristActivity extends AppCompatActivity {
 
     EditText tourText;
     Button profileButton;
     Button tourButton;
-    String[] mobileArray = {"Tour1","Tour2","Tour3"};
+    ArrayList<String> mobileArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourist);
+
+        mobileArray.add("Tour1");
+        mobileArray.add("Tour2");
+        mobileArray.add("Tour3");
         tourText = (EditText) findViewById(R.id.edittext);
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {

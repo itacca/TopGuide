@@ -6,4 +6,51 @@
     android:layout_height="match_parent"
     tools:context="com.topguide.topguide.activity.LoginActivity">
 
+    <TextView
+        android:id="@+id/text_view1"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username: "
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <EditText
+        android:layout_alignTop="@id/text_view1"
+        android:layout_marginTop="30dp"
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your username" />
+
+    <TextView
+        android:id="@+id/text_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/username"
+        android:layout_marginTop="75dp"
+        android:text="Password"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_alignTop="@+id/text_view2"
+        android:layout_marginTop="30dp"
+        android:hint="Enter your password"/>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/password"
+        android:layout_marginTop="75dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"/>
+
 </RelativeLayout>
