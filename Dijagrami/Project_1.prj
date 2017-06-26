@@ -507,7 +507,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>B27C52F0-107D-4D22-9129-85E3FA19BCF1</a:CustomPictureID>
+<a:CustomPictureID>613A41A4-CC56-4350-A065-FDFFC6C0D4E2</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -529,7 +529,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>B27C52F0-107D-4D22-9129-85E3FA19BCF1</a:CustomPictureID>
+<a:CustomPictureID>613A41A4-CC56-4350-A065-FDFFC6C0D4E2</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -549,7 +549,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>Use_Cases_Dijagram</a:Code>
 <a:CreationDate>1498049944</a:CreationDate>
 <a:Creator>Igor</a:Creator>
-<a:ModificationDate>1498423785</a:ModificationDate>
+<a:ModificationDate>1498474666</a:ModificationDate>
 <a:Modifier>Vanja</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/Use Cases Dijagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
