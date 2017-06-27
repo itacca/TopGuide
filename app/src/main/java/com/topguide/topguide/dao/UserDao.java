@@ -8,7 +8,11 @@ import com.topguide.topguide.model.User;
 
 public class UserDao {
 
-    User currentUser;
+    private User currentUser;
+
+    public UserDao() {
+        currentUser = null;
+    }
 
     public User getCurrentUser() {
         return currentUser;
