@@ -33,7 +33,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         guestBtn = (Button) findViewById(R.id.welcome_guest);
 
         loginBtn.setOnClickListener(WelcomeActivity.this);
-
+        registerBtn.setOnClickListener(WelcomeActivity.this);
+        guestBtn.setOnClickListener(WelcomeActivity.this);
 
     }
 
