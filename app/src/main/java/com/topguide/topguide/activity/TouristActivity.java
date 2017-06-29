@@ -40,6 +40,14 @@ public class TouristActivity extends AppCompatActivity {
 
     private void init() {
 
+        tourDao = new TourDao();
+        tours = new ArrayList<Tour>();
+        tours = tourDao.getTours();
+
+        listView = (ListView) findViewById(R.id.tourslist);
+        TourAdapter adapter = new TourAdapter(this, tours);
+        listView.setAdapter(adapter);
+
         tourText = (EditText) findViewById(R.id.edittext);
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {
@@ -57,12 +65,5 @@ public class TouristActivity extends AppCompatActivity {
                 //show searched tours
             }
         });
-
-        tours = tourDao.getTours();
-
-        TourAdapter adapter = new TourAdapter(this, tours);
-
-        listView = (ListView) findViewById(R.id.tourslist);
-        listView.setAdapter(adapter);
     }
 }

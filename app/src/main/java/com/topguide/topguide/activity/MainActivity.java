@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         // if no user is logged in
-        if (userDao.getCurrentUser() == null) {
-            Intent intent = new Intent(this, WelcomeActivity.class);
+        //if (userDao.getCurrentUser() == null) {
+            Intent intent = new Intent(this, TouristActivity.class);
             startActivityForResult(intent, WELCOME_START_CODE);
-        } else {
+        //} else {
 
-        }
+        //}
 
     }
 }
