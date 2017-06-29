@@ -19,5 +19,11 @@ public class TopGuideApp extends Application {
         userDao = new UserDao();
     }
 
+    public UserDao getUserDao() {
+        return userDao;
+    }
 
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 }

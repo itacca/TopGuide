@@ -1,5 +1,6 @@
 package com.topguide.topguide.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.TopGuideApp;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,7 +52,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 startActivityForResult(intent2, REGISTER_START_CODE);
                 break;
             case R.id.welcome_guest:
-
+                TopGuideApp app = (TopGuideApp) getApplicationContext();
+                app.getUserDao().setCurrentUser(null);
                 break;
         }
     }
