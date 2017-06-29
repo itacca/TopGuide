@@ -1,5 +1,6 @@
 package com.topguide.topguide.model;
 
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -11,6 +12,7 @@ public class Tour {
     private String name;
     private String cityName;
     private Date startDate;
+    private int rate;
 
     public Tour() {
 
@@ -20,6 +22,14 @@ public class Tour {
         this.name = name;
         this.cityName = cityName;
         this.startDate = startDate;
+        this.rate = 0;
+    }
+
+    public Tour(String name, String cityName, Date startDate, int a) {
+        this.name = name;
+        this.cityName = cityName;
+        this.startDate = startDate;
+        this.rate = a;
     }
 
     public String getName() {
@@ -44,5 +54,22 @@ public class Tour {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public static class Compare implements Comparator<Tour> {
+
+        @Override
+        public int compare(Tour t1, Tour t2) {
+
+            return t2.getRate() - t1.getRate();
+        }
     }
 }
