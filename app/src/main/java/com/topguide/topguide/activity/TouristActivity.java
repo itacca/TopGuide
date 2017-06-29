@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.adapter.TourAdapter;
+import com.topguide.topguide.dao.TourDao;
+import com.topguide.topguide.model.Tour;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -12,26 +16,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+
 public class TouristActivity extends AppCompatActivity {
 
+    TourDao tourDao;
     EditText tourText;
     Button profileButton;
     Button tourButton;
-    ArrayList<String> mobileArray = new ArrayList<>();
+    ListView listView;
+    ArrayList<Tour> tours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourist);
 
-        mobileArray.add("Tour1");
-        mobileArray.add("Tour2");
-        mobileArray.add("Tour3");
+        init();
+    }
+
+    private void init() {
+
         tourText = (EditText) findViewById(R.id.edittext);
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {
@@ -50,10 +58,11 @@ public class TouristActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_tourist, mobileArray);
+        tours = tourDao.getTours();
 
-        ListView listView = (ListView) findViewById(R.id.tourslist);
+        TourAdapter adapter = new TourAdapter(this, tours);
+
+        listView = (ListView) findViewById(R.id.tourslist);
         listView.setAdapter(adapter);
     }
 }
