@@ -59,9 +59,10 @@ public class TouristActivity extends AppCompatActivity {
         tourButton = (Button) findViewById(R.id.searchToursButton);
         tourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                String str = tourText.getText().toString();
-                Toast msg = Toast.makeText(getBaseContext(),str,Toast.LENGTH_LONG);
-                msg.show();
+                String word = tourText.getText().toString();
+                ArrayList<Tour> searchedTours = tourDao.searchTours(word);
+                TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
+                listView.setAdapter(adapter);
                 //show searched tours
             }
         });
