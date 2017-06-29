@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowSoftInputMode="stateHidden"
+    android:imeOptions="actionDone"
     tools:context="com.topguide.topguide.activity.TouristActivity">
 
     <Button android:id="@+id/profilebutton"
