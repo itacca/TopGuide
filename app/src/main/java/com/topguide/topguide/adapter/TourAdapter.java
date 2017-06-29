@@ -68,7 +68,7 @@ public class TourAdapter extends BaseAdapter {
     }
 
 
-    private class ViewHolder {
+    private static class ViewHolder {
         private TextView tourName;
         private TextView cityName;
         private TextView startDate;

@@ -18,4 +18,18 @@ public class TourDao {
 
         return tours;
     }
+
+    public ArrayList<Tour> searchTours(String word) {
+
+        ArrayList<Tour> searchedTours = new ArrayList<>();
+
+        for(Tour t : tours){
+
+            if(t.getName().toLowerCase().contains(word.toLowerCase()))
+
+                searchedTours.add(t);
+        }
+
+        return searchedTours;
+    }
 }
