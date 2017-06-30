@@ -1,6 +1,7 @@
 package com.topguide.topguide;
 
 import android.app.Application;
+import android.content.Intent;
 
 import com.topguide.topguide.dao.PersonDao;
 import com.topguide.topguide.dao.TourDao;
@@ -21,7 +22,7 @@ public class TopGuideApp extends Application {
         super.onCreate();
 
         userDao = new UserDao();
-        personDao = new PersonDao();
+        personDao = new PersonDao(userDao);
         tourDao = new TourDao();
     }
 

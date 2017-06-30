@@ -1,5 +1,6 @@
 package com.topguide.topguide.dao;
 
+import com.topguide.topguide.model.Tour;
 import com.topguide.topguide.model.Tourist;
 import com.topguide.topguide.model.User;
 
@@ -13,11 +14,26 @@ public class PersonDao {
 
     private Tourist currentTourist;
     private ArrayList<Tourist> tourists;
-
-
-    public PersonDao() {
+    private UserDao userDao;
+    
+    public PersonDao(UserDao ud) {
         currentTourist = null;
-        tourists = null;
+        userDao = ud;
+        setUpTourists();
+        setUpUsers();
+    }
+
+    private void setUpUsers() {
+        for (Tourist t : tourists) {
+            userDao.addUser(t.getUser());
+        }
+    }
+
+    private void setUpTourists() {
+        tourists = new ArrayList<>();
+        tourists.add(new Tourist("Ana", "AnicTurista", "ana@gmail.com", new User("ana", "12345", 0)));
+        tourists.add(new Tourist("Ana", "BanicVodic", "ana@gmail.com", new User("bana", "12345", 1)));
+        tourists.add(new Tourist("Ana", "CanicTurista", "ana@gmail.com", new User("cana", "12345", 0)));
     }
 
     public PersonDao(Tourist currentTourist, ArrayList<Tourist> tourists) {
@@ -29,6 +45,14 @@ public class PersonDao {
         return currentTourist;
     }
 
+    public void setUpCurrentTourist(String username) {
+        for (Tourist t : tourists) {
+            if (t.getUser().getUsername().equals(username)) {
+                currentTourist = t;
+            }
+        }
+    }
+
     public void setCurrentTourist(Tourist currentTourist) {
         this.currentTourist = currentTourist;
     }
@@ -38,9 +62,12 @@ public class PersonDao {
     }
 
     public void setTourists(ArrayList<Tourist> tourists) {
-
+        this.tourists = tourists;
     }
 
-    public void writePerson(String textUsername, String textName, String textLastName, String textEmail) {
+    public void writePerson(String textUsername, String textPassword, String textName, String textLastName, String textEmail, int role) {
+        Tourist t = new Tourist(textName, textLastName, textEmail, new User(textUsername, textPassword, role));
+        tourists.add(t);
+        userDao.addUser(t.getUser());
     }
 }
