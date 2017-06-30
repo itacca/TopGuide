@@ -63,7 +63,6 @@ public class UnregisteredActivity extends AppCompatActivity {
                         Toast.makeText(UnregisteredActivity.this, "Please register to see detailed tours.", Toast.LENGTH_SHORT).show();
                     }
                 });
-                //show searched tours
             }
         });
     }
