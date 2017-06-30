@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         // if no user is logged in
-        if (app.getUserDao().getCurrentUser() == null) {
-            Intent intent = new Intent(this, WelcomeActivity.class);
+        //if (app.getUserDao().getCurrentUser() == null) {
+            Intent intent = new Intent(this, UnregisteredActivity.class);
             startActivityForResult(intent, WELCOME_START_CODE);
-        } else {
+        //} else {
             // u zavisnosti od uloge ce se otvoriti prozor za odredjenog korisnika
-        }
+        //}
     }
 
     @Override
