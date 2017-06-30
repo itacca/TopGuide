@@ -14,12 +14,12 @@ public class Tour implements Serializable {
     private String name;
     private String cityName;
     private Date startDate;
-    private int rate;
+    private double rate;
     private Pricelist price;
     private String description;
     Guide guide;
-    ArrayList<Integer> grades;
-    ArrayList<String> comments;
+    ArrayList<Rate> rates;
+    ArrayList<Comment> comments;
     State activeState;
 
 
@@ -33,9 +33,9 @@ public class Tour implements Serializable {
         this.startDate = startDate;
         this.rate = 0;
         this.price = new Pricelist();
-        this.description = "";
+        this.description = "NAJVECE ZURKE NA SVETU KOD VULETA!";
         this.guide = new Guide();
-        this.grades = new ArrayList<>();
+        this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.activeState = new State();
     }
@@ -48,7 +48,7 @@ public class Tour implements Serializable {
         this.price = new Pricelist();
         this.description = "";
         this.guide = new Guide();
-        this.grades = new ArrayList<>();
+        this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.activeState = new State();
     }
@@ -77,11 +77,11 @@ public class Tour implements Serializable {
         this.startDate = startDate;
     }
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
@@ -109,19 +109,19 @@ public class Tour implements Serializable {
         this.guide = guide;
     }
 
-    public ArrayList<Integer> getGrades() {
-        return grades;
+    public ArrayList<Rate> getGrades() {
+        return rates;
     }
 
-    public void setGrades(ArrayList<Integer> grades) {
-        this.grades = grades;
+    public void setGrades(ArrayList<Rate> rates) {
+        this.rates = rates;
     }
 
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(ArrayList<String> comments) {
+    public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
 
@@ -138,20 +138,22 @@ public class Tour implements Serializable {
         @Override
         public int compare(Tour t1, Tour t2) {
 
-            return t2.getRate() - t1.getRate();
+            if (t1.getRate() < t2.getRate()) return -1;
+            if (t1.getRate() > t2.getRate()) return 1;
+            return 0;
         }
     }
 
     public void calculateRate(int rate){
 
-        this.grades.add(rate);
+        this.rates.add(new Rate(rate));
 
-        int sum = 0;
+        double sum = 0;
 
-        for (int i : this.grades)
-            sum = sum + i;
+        for (Rate i : this.rates)
+            sum = sum + i.getRate();
 
-        this.rate = sum / this.grades.size();
+        this.rate = sum / this.rates.size();
     }
 
 }

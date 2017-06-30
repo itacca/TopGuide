@@ -16,7 +16,10 @@ public class Pricelist {
         this.startDate = startDate;
     }
 
-    public Pricelist() {}
+    public Pricelist() {
+        this.price = 0;
+        this.startDate = new Date();
+    }
 
     public double getPrice() {
         return price;
