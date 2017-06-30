@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.adapter.TourAdapter;
 import com.topguide.topguide.dao.TourDao;
 import com.topguide.topguide.model.Tour;
@@ -25,14 +26,14 @@ import java.util.ArrayList;
 
 public class TouristActivity extends AppCompatActivity {
 
-    TourDao tourDao;
     EditText tourText;
     Button profileButton;
     Button tourButton;
     ListView listView;
-    ArrayList<Tour> tours;
     Tour currentTour;
+    TopGuideApp app;
     int DETAILED_TOUR_CODE = 18;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +44,10 @@ public class TouristActivity extends AppCompatActivity {
     }
 
     private void init() {
-
-        tourDao = new TourDao();
-        tours = new ArrayList<Tour>();
-        tours = tourDao.getTours();
+        app = (TopGuideApp) getApplication();
 
         listView = (ListView) findViewById(R.id.tourslist);
-        TourAdapter adapter = new TourAdapter(this, tours);
+        TourAdapter adapter = new TourAdapter(this, app.getTourDao().getTours());
         listView.setAdapter(adapter);
 
         tourText = (EditText) findViewById(R.id.edittext);
@@ -64,7 +62,7 @@ public class TouristActivity extends AppCompatActivity {
         tourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 String word = tourText.getText().toString();
-                ArrayList<Tour> searchedTours = tourDao.searchTours(word);
+                ArrayList<Tour> searchedTours = app.getTourDao().searchTours(word);
                 TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
                 listView.setAdapter(adapter);
                 //show searched tours
@@ -76,10 +74,11 @@ public class TouristActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                currentTour = tours.get(i);
+                currentTour = app.getTourDao().getTours().get(i);
+
 
                 Intent articleList = new Intent(getBaseContext(), DetailedTourActivity.class);
-
+                articleList.putExtra("tour",currentTour);
                 startActivityForResult(articleList, DETAILED_TOUR_CODE);
             }
         });

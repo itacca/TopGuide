@@ -1,10 +1,12 @@
 package com.topguide.topguide.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Igor on 6/29/2017.
  */
 
-public class Tourist {
+public class Tourist implements Serializable{
 
     private String name;
     private String lastname;

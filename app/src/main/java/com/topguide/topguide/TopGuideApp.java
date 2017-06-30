@@ -3,6 +3,7 @@ package com.topguide.topguide;
 import android.app.Application;
 
 import com.topguide.topguide.dao.PersonDao;
+import com.topguide.topguide.dao.TourDao;
 import com.topguide.topguide.dao.UserDao;
 
 /**
@@ -13,6 +14,7 @@ public class TopGuideApp extends Application {
 
     private UserDao userDao;
     private PersonDao personDao;
+    private TourDao tourDao;
 
     @Override
     public void onCreate() {
@@ -20,6 +22,7 @@ public class TopGuideApp extends Application {
 
         userDao = new UserDao();
         personDao = new PersonDao();
+        tourDao = new TourDao();
     }
 
     public UserDao getUserDao() {
@@ -36,5 +39,11 @@ public class TopGuideApp extends Application {
 
     public void setPersonDao(PersonDao personDao) {
         this.personDao = personDao;
+    }
+
+    public TourDao getTourDao() { return  tourDao; }
+
+    public void setTourDao(TourDao tourDao) {
+        this.tourDao = tourDao;
     }
 }

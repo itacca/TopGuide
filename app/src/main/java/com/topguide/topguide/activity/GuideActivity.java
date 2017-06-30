@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.adapter.TourAdapter;
 import com.topguide.topguide.dao.TourDao;
 import com.topguide.topguide.model.Tour;
@@ -25,14 +26,13 @@ import java.util.ArrayList;
 
 public class GuideActivity extends AppCompatActivity {
 
-    TourDao tourDao;
     EditText tourText;
     Button profileButton;
     Button tourButton;
     Button newTourButton;
     ListView listView;
-    ArrayList<Tour> tours;
     Tour currentTour;
+    TopGuideApp app;
     int DETAILED_TOUR_CODE = 18;
 
     @Override
@@ -45,12 +45,10 @@ public class GuideActivity extends AppCompatActivity {
 
     private void init() {
 
-        tourDao = new TourDao();
-        tours = new ArrayList<Tour>();
-        tours = tourDao.getTours();
+        app = (TopGuideApp) getApplication();
 
         listView = (ListView) findViewById(R.id.tourslist);
-        TourAdapter adapter = new TourAdapter(this, tours);
+        TourAdapter adapter = new TourAdapter(this, app.getTourDao().getTours());
         listView.setAdapter(adapter);
 
         tourText = (EditText) findViewById(R.id.edittext);
@@ -72,7 +70,7 @@ public class GuideActivity extends AppCompatActivity {
         tourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 String word = tourText.getText().toString();
-                ArrayList<Tour> searchedTours = tourDao.searchTours(word);
+                ArrayList<Tour> searchedTours = app.getTourDao().searchTours(word);
                 TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
                 listView.setAdapter(adapter);
                 //show searched tours
@@ -84,11 +82,17 @@ public class GuideActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                currentTour = tours.get(i);
+                currentTour = app.getTourDao().getTours().get(i);
 
-                Intent articleList = new Intent(getBaseContext(), DetailedTourActivity.class);
+                if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
+                    //intent za svoju turu vodica
+                }
+                else{
 
-                startActivityForResult(articleList, DETAILED_TOUR_CODE);
+                    Intent articleList = new Intent(getBaseContext(), DetailedTourActivity.class);
+                    articleList.putExtra("tour", currentTour);
+                    startActivityForResult(articleList, DETAILED_TOUR_CODE);
+                }
             }
         });
     }
