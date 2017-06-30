@@ -10,16 +10,19 @@ public class TourDao {
     private ArrayList<Tour> tours;
 
     public TourDao() {
+        setTours();
+    }
+
+    private void setTours() {
         tours = new ArrayList<Tour>();
-        tours.add(new Tour("A","1", new Date()));
-        tours.add(new Tour("AAa","1", new Date(),2));
-        tours.add(new Tour("Aa","1", new Date()));
-        tours.add(new Tour("B","2",new Date()));
-        tours.add(new Tour("C","3",new Date()));
+        tours.add(new Tour("Obilazak restorana","Novi Sad", new Date()));
+        tours.add(new Tour("Obilazak muzeja","Novi Sad", new Date()));
+        tours.add(new Tour("All-round obilazak","Beograd", new Date()));
+        tours.add(new Tour("Obilazak znamenitosti","Beograd",new Date()));
+        tours.add(new Tour("Brza tura po gradu","Nis",new Date()));
     }
 
     public ArrayList<Tour> getTours() {
-
         Collections.sort(tours, new Tour.Compare());
         return tours;
     }

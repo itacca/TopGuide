@@ -19,12 +19,24 @@ public class User {
     private Role role;
 
     public User() {
-
+        username = null;
+        password = null;
+        role = Role.GUEST;
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, int role) {
         this.username = username;
         this.password = password;
+        switch (role) {
+            case 0:
+                this.role = Role.TOURIST;
+                break;
+            case 1:
+                this.role = Role.GUIDE;
+                break;
+            default:
+                this.role = Role.GUEST;
+        }
     }
 
     public String getUsername() {
