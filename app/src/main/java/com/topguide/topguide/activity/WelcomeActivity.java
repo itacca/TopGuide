@@ -54,7 +54,33 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.welcome_guest:
                 TopGuideApp app = (TopGuideApp) getApplicationContext();
                 app.getUserDao().setCurrentUser(null);
+                Intent intent3 = new Intent();
+                setResult(RESULT_OK, intent3);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == LOGIN_START_CODE) {
+            if (resultCode == RESULT_OK) {
+                if (data.getExtras().getBoolean("successful")) {
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK, intent);
+                }
+            }
+        } else if (requestCode == REGISTER_START_CODE) {
+            if (resultCode == RESULT_OK) {
+                if (data.getExtras().getBoolean("successful")) {
+                    Intent intent2 = new Intent();
+                    setResult(RESULT_OK, intent2);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

@@ -26,7 +26,16 @@ public class UserDao {
 
     }
 
-    public User validateUser() {
+    public boolean validateUser(String username, String password) {
+
+        return true;
+    }
+
+    public boolean userExists(String username) {
+        return false;
+    }
+
+    public void writeUser(String username, String password) {
 
     }
 

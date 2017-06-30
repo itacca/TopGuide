@@ -23,12 +23,13 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class TouristActivity extends AppCompatActivity {
+public class GuideActivity extends AppCompatActivity {
 
     TourDao tourDao;
     EditText tourText;
     Button profileButton;
     Button tourButton;
+    Button newTourButton;
     ListView listView;
     ArrayList<Tour> tours;
     Tour currentTour;
@@ -37,7 +38,7 @@ public class TouristActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tourist);
+        setContentView(R.layout.activity_guide);
 
         init();
     }
@@ -57,6 +58,13 @@ public class TouristActivity extends AppCompatActivity {
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 //enter my profile
+            }
+        });
+
+        newTourButton = (Button) findViewById(R.id.newtourbutton);
+        newTourButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                //create new tour
             }
         });
 
