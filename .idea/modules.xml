@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TopGuide.iml" filepath="$PROJECT_DIR$/TopGuide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TopGuide-cb475ec7b932ad4f882dd560b7bffc09acb5c93e.iml" filepath="$PROJECT_DIR$/TopGuide-cb475ec7b932ad4f882dd560b7bffc09acb5c93e.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
