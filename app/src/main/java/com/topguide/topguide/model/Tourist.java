@@ -20,13 +20,6 @@ public class Tourist implements Serializable{
         this.lastname = "Jankovic";
     }
 
-    public Tourist(String name, String lastname, String email, User user) {
-        this.name = name;
-        this.lastname = lastname;
-        this.email = email;
-        this.user = user;
-    }
-
     public Tourist(String name, String lastname, String email, User user, ArrayList<Tour> tours) {
         this.name = name;
         this.lastname = lastname;
