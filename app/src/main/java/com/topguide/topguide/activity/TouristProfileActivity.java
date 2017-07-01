@@ -47,7 +47,6 @@ public class TouristProfileActivity extends AppCompatActivity {
         Tourist tourist = new Tourist("Petar", "Petrovic", "petarpetrovic@gmail.com", new User("pera123", "321"));
 
         //Tourist tourist1 = app.getPersonDao().getCurrentTourist();
-        //Tourist tourist1 = app.getPersonDao().searchPerson(???);
 
         usernameButton.setText(tourist.getUser().getUsername());
         passwordButton.setText(tourist.getUser().getPassword());
