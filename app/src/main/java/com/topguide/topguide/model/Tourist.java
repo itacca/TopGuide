@@ -16,8 +16,8 @@ public class Tourist implements Serializable{
     private ArrayList<Tour> tours;
 
     public Tourist() {
-        this.name = "Vule";
-        this.lastname = "Jankovic";
+        this.name = null;
+        this.lastname = null;
     }
 
     public Tourist(String name, String lastname, String email, User user) {
