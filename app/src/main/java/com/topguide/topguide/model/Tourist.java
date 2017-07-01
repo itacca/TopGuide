@@ -25,6 +25,7 @@ public class Tourist implements Serializable{
         this.lastname = lastname;
         this.email = email;
         this.user = user;
+        this.tours = new ArrayList<>();
     }
 
     public Tourist(String name, String lastname, String email, User user, ArrayList<Tour> tours) {
