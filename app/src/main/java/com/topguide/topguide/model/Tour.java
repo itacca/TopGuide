@@ -33,7 +33,7 @@ public class Tour implements Serializable {
         this.startDate = startDate;
         this.rate = 0;
         this.price = new Pricelist();
-        this.description = "NAJVECE ZURKE NA SVETU KOD VULETA!";
+        this.description = "***Neki opis***";
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
