@@ -38,7 +38,7 @@ public class DetailedTourActivity extends AppCompatActivity {
 
     public void init() {
 
-
+/*
         app = (TopGuideApp) getApplication();
         currentTour = (Tour) this.getIntent().getExtras().getSerializable("tour");
 
@@ -53,7 +53,7 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         dateAndTime.setText(formatter.format(currentTour.getStartDate()));
 
-        tourRate = (TextView) findViewById(R.id.ratevalue);
+        tourRate = (TextView) findViewById(R.id.ratelabel);
         tourRate.setText(String.format("%.2f", currentTour.getRate()));
 
         guideName = (TextView) findViewById(R.id.guidename);
@@ -61,6 +61,9 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         guideRate = (TextView) findViewById(R.id.guideratevalue);
         guideRate.setText(String.format("%.2f", currentTour.getRate()));
+
+        tourPrice = (TextView) findViewById(R.id.tourprice);
+        tourPrice.setText(String.format("%.2f", currentTour.getPrice().getPrice()) + " dinara");
 
         tourPrice = (TextView) findViewById(R.id.tourprice);
         tourPrice.setText(String.format("%.2f", currentTour.getPrice().getPrice()) + " dinara");
@@ -73,8 +76,8 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourDescription.setText(currentTour.getDescription());
 
         signUpButton = (Button) findViewById(R.id.searchToursButton);
-        //signUpButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-
+        signUpButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+*/
         /**
          * if prijavljen na turu then DUGME POSTAJE ODJAVNO DUGME
          *

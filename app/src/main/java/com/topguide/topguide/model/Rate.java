@@ -1,12 +1,10 @@
 package com.topguide.topguide.model;
 
-import java.io.Serializable;
-
 /**
  * Created by Vanja on 30.6.2017..
  */
 
-public class Rate implements Serializable {
+public class Rate {
 
     private double rate;
 
