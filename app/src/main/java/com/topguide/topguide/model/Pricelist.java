@@ -17,10 +17,7 @@ public class Pricelist implements Serializable {
         this.startDate = startDate;
     }
 
-    public Pricelist() {
-        this.price = 0;
-        this.startDate = new Date();
-    }
+    public Pricelist() {}
 
     public double getPrice() {
         return price;

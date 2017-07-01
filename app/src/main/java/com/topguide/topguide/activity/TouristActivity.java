@@ -32,7 +32,7 @@ public class TouristActivity extends AppCompatActivity {
     ListView listView;
     Tour currentTour;
     TopGuideApp app;
-    int DETAILED_TOUR_CODE = 24;
+    int DETAILED_TOUR_CODE = 18;
 
 
     @Override
@@ -69,7 +69,6 @@ public class TouristActivity extends AppCompatActivity {
             }
         });
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -78,9 +77,9 @@ public class TouristActivity extends AppCompatActivity {
                 currentTour = app.getTourDao().getTours().get(i);
 
 
-                Intent next = new Intent(TouristActivity.this, DetailedTourActivity.class);
-                next.putExtra("tour",currentTour);
-                startActivityForResult(next, DETAILED_TOUR_CODE);
+                Intent articleList = new Intent(getBaseContext(), DetailedTourActivity.class);
+                articleList.putExtra("tour",currentTour);
+                startActivityForResult(articleList, DETAILED_TOUR_CODE);
             }
         });
     }

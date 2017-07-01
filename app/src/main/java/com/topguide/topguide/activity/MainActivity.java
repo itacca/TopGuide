@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         app = (TopGuideApp) getApplication();
-
+/*
         Intent intent = new Intent(this, TouristActivity.class);
         startActivityForResult(intent, WELCOME_START_CODE);
-
-        //init();
+*/
+        init();
     }
 
     private void init() {

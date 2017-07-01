@@ -14,42 +14,29 @@ public class UserDao {
     private ArrayList<User> users;
 
     public UserDao() {
+        init();
+    }
+
+    private void init() {
         currentUser = null;
-        users = new ArrayList<>();
+        users = null;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
+    public void readUsers() {
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
-    public void addUser(User u) {
-        users.add(u);
     }
 
     public boolean validateUser(String username, String password) {
-        for (User u : users) {
-            if (u.getUsername().equals(username)) {
-                if (u.getPassword().equals(password)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
+
+        return true;
     }
 
     public boolean userExists(String username) {
-        for (User u : users) {
-            if (u.getUsername().equals(username)) {
-                return true;
-            }
-        }
         return false;
+    }
+
+    public void writeUser(String username, String password) {
+
     }
 
     public User getCurrentUser() {
@@ -58,6 +45,17 @@ public class UserDao {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public User searchUser(String username){
+
+        for (User u: users){
+            if (u.getUsername().compareTo(username) == 0){
+                return u;
+            }
+        }
+
+        return null;
     }
 }
 

@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.adapter.TourAdapter;
 import com.topguide.topguide.dao.TourDao;
 import com.topguide.topguide.model.Tour;
@@ -23,6 +24,8 @@ public class UnregisteredActivity extends AppCompatActivity {
     ArrayList<Tour> tours;
     TourDao tourDao;
 
+    TopGuideApp app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class UnregisteredActivity extends AppCompatActivity {
         tourDao = new TourDao();
         tours = new ArrayList<Tour>();
         tours = tourDao.getTours();
+        //tours = app.getTourDao().getTours();
 
         listView = (ListView) findViewById(R.id.tourslist);
         TourAdapter adapter = new TourAdapter(this, tours);
@@ -54,6 +58,7 @@ public class UnregisteredActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String word = tourText.getText().toString();
                 ArrayList<Tour> searchedTours = tourDao.searchTours(word);
+                // ArrayList<Tour> searchedTours = app.getTourDao().searchTours(word);
                 TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
