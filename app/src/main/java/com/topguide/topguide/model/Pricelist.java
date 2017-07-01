@@ -1,12 +1,13 @@
 package com.topguide.topguide.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Vanja on 30.6.2017..
  */
 
-public class Pricelist {
+public class Pricelist implements Serializable {
 
     private double price;
     private Date startDate;
