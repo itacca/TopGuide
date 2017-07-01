@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="stateHidden"
+    android:imeOptions="actionDone"
+    tools:context="com.topguide.topguide.activity.TouristActivity">
+
+    <Button android:id="@+id/profilebutton"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="My Profile"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/searchtours"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Search Tours:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/profilebutton"
+        android:layout_marginLeft="5dp"
+         />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Enter city name..."
+        android:inputType="text"
+        android:layout_below="@+id/searchtours"
+        android:layout_marginLeft="5dp" />
+
+    <Button android:id="@+id/searchToursButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Search Tours"
+        android:layout_below="@+id/edittext"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/populartours"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Popular Tours:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/searchToursButton"
+        android:layout_marginLeft="5dp"/>
+
+    <ListView
+
+        android:id="@+id/tourslist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/populartours"
+        android:layout_marginTop="10dp">
+
+    </ListView>
+
+</RelativeLayout>

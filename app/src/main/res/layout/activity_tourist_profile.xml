@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.topguide.topguide.activity.RegisterActivity">
+
+    <TextView
+        android:id="@+id/text_view_tourist"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username: "
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <Button
+        android:layout_alignTop="@id/text_view_tourist"
+        android:layout_marginTop="20dp"
+        android:id="@+id/usernamebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/text_view_tourist1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/usernamebutton"
+        android:layout_marginTop="60dp"
+        android:text="Password:"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordbutton"
+        android:layout_alignTop="@+id/text_view_tourist1"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/text_view_tourist2"
+        android:layout_alignTop="@+id/passwordbutton"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name: "
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <Button
+        android:layout_alignTop="@id/text_view_tourist2"
+        android:layout_marginTop="20dp"
+        android:id="@+id/namebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/text_view_tourist3"
+        android:layout_alignTop="@+id/namebutton"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Last name: "
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <Button
+        android:layout_alignTop="@id/text_view_tourist3"
+        android:layout_marginTop="20dp"
+        android:id="@+id/lastnamebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/text_view_tourist4"
+        android:layout_alignTop="@+id/lastnamebutton"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E-mail: "
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"/>
+
+    <Button
+        android:layout_alignTop="@id/text_view_tourist4"
+        android:layout_marginTop="20dp"
+        android:id="@+id/emailbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/toursbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/emailbutton"
+        android:layout_marginTop="60dp"
+        android:text="See your tours"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"/>
+
+    <Button
+        android:id = "@+id/becometouristbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_alignTop="@+id/toursbutton"
+        android:text="Become a guide"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        />
+
+</RelativeLayout>

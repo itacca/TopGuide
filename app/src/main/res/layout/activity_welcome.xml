@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.topguide.topguide.activity.WelcomeActivity">
+
+    <TextView
+        android:id="@+id/welcome_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:text="Welcome"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/welcome_login"
+        android:layout_alignTop="@+id/welcome_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"/>
+
+
+    <Button
+        android:id="@+id/welcome_register"
+        android:layout_alignTop="@+id/welcome_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/welcome_guest"
+        android:layout_alignTop="@+id/welcome_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Continue as a guest"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"/>
+</RelativeLayout>
