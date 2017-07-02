@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         app = (TopGuideApp) getApplication();
 
-        Intent intent = new Intent(this, TouristActivity.class);
+        Intent intent = new Intent(this, GuideActivity.class);
         startActivityForResult(intent, WELCOME_START_CODE);
 
         //init();

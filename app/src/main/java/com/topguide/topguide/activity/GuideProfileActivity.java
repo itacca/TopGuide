@@ -12,7 +12,7 @@ import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.model.Tourist;
 import com.topguide.topguide.model.User;
 
-public class TouristProfileActivity extends AppCompatActivity {
+public class GuideProfileActivity extends AppCompatActivity {
 
     private Button usernameButton;
     private Button passwordButton;
@@ -21,19 +21,16 @@ public class TouristProfileActivity extends AppCompatActivity {
     private Button emailButton;
 
     private Button toursButton;
-    private Button becomeGuideButton;
 
     private TopGuideApp app;
     private Context context;
 
-    private static final int TOURIST_TOURS_CODE = 77;
-
-    //Tourist tourist;
+    private static final int GUIDE_TOURS_CODE = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tourist_profile);
+        setContentView(R.layout.activity_guide_profile);
 
         context = this;
         init();
@@ -48,7 +45,6 @@ public class TouristProfileActivity extends AppCompatActivity {
         emailButton = (Button) findViewById(R.id.emailbutton);
 
         toursButton = (Button) findViewById(R.id.toursbutton);
-        becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
 
         User user = new User("pera123", "321");
         Tourist tourist = new Tourist("Petar", "Petrovic", "petarpetrovic@gmail.com", user);
@@ -65,15 +61,8 @@ public class TouristProfileActivity extends AppCompatActivity {
         toursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TouristToursActivity.class);
-                startActivityForResult(intent, TOURIST_TOURS_CODE);
-            }
-        });
-
-        becomeGuideButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                Intent intent = new Intent(context, GuideToursActivity.class);
+                startActivityForResult(intent, GUIDE_TOURS_CODE);
             }
         });
     }

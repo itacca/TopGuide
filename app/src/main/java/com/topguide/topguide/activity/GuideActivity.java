@@ -1,5 +1,6 @@
 package com.topguide.topguide.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,14 +35,19 @@ public class GuideActivity extends AppCompatActivity {
     Tour currentTour;
     TopGuideApp app;
     boolean error;
+
     int DETAILED_TOUR_CODE = 18;
     int CREATE_TOUR_CODE = 442;
+    private static final int GUIDE_PROFILE_CODE = 342;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
 
+        context = this;
         init();
     }
 
@@ -54,10 +60,13 @@ public class GuideActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         tourText = (EditText) findViewById(R.id.edittext);
+
+
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                //enter my profile
+                Intent intent = new Intent(context, GuideProfileActivity.class);
+                startActivityForResult(intent, GUIDE_PROFILE_CODE);
             }
         });
 

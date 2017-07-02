@@ -1,5 +1,6 @@
 package com.topguide.topguide.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,11 @@ public class TouristActivity extends AppCompatActivity {
     ListView listView;
     Tour currentTour;
     TopGuideApp app;
-    int DETAILED_TOUR_CODE = 24;
+
+    private static final int DETAILED_TOUR_CODE = 24;
+    private static final int TOURIST_PROFILE_CODE = 77;
+
+    private Context context;
 
 
     @Override
@@ -46,6 +51,8 @@ public class TouristActivity extends AppCompatActivity {
     private void init() {
         app = (TopGuideApp) getApplication();
 
+        context = this;
+
         listView = (ListView) findViewById(R.id.tourslist);
         TourAdapter adapter = new TourAdapter(this, app.getTourDao().getTours());
         listView.setAdapter(adapter);
@@ -54,7 +61,8 @@ public class TouristActivity extends AppCompatActivity {
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                //enter my profile
+                Intent intent = new Intent(context, TouristProfileActivity.class);
+                startActivityForResult(intent, TOURIST_PROFILE_CODE);
             }
         });
 
