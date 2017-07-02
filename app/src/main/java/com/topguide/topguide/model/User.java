@@ -24,6 +24,11 @@ public class User {
         role = Role.GUEST;
     }
 
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
     public User(String username, String password, int role) {
         this.username = username;
         this.password = password;
