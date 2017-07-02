@@ -1,10 +1,12 @@
 package com.topguide.topguide.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Igor on 6/20/2017.
  */
 
-public class User {
+public class User implements Serializable{
 
     public enum Role {
         TOURIST,

@@ -18,6 +18,9 @@ public class Tourist implements Serializable{
     public Tourist() {
         this.name = null;
         this.lastname = null;
+        this.email = null;
+        this.user = new User();
+        this.tours = new ArrayList<>();
     }
 
     public Tourist(String name, String lastname, String email, User user) {
@@ -85,5 +88,49 @@ public class Tourist implements Serializable{
         sb.append(", user=").append(user);
         sb.append('}');
         return sb.toString();
+    }
+
+    public void signUpForTour(Tour tour){
+
+        boolean signed = false;
+
+        for(Tourist t : tour.getTourists()){
+
+            if(t.getUser().getUsername().equals(this.user.getUsername())){
+
+                signed = true;
+                break;
+            }
+        }
+
+        if(!signed) {
+
+            this.tours.add(tour);
+            ArrayList<Tourist> tourists = tour.getTourists();
+            tourists.add(this);
+            tour.setTourists(tourists);
+        }
+    }
+
+    public void signOutOfTour(Tour tour){
+
+        boolean signed = false;
+
+        for(Tourist t : tour.getTourists()){
+
+            if(t.getUser().getUsername().equals(this.user.getUsername())){
+
+                signed = true;
+                break;
+            }
+        }
+
+        if(signed) {
+
+            this.tours.remove(tour);
+            ArrayList<Tourist> tourists = tour.getTourists();
+            tourists.remove(this);
+            tour.setTourists(tourists);
+        }
     }
 }

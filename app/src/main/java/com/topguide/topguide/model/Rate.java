@@ -10,6 +10,10 @@ public class Rate implements Serializable {
 
     private double rate;
 
+    public Rate() {
+        this.rate = 0;
+    }
+
     public Rate(double rate) {
         this.rate = rate;
     }

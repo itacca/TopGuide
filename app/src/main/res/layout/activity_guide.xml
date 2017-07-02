@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     tools:context="com.topguide.topguide.activity.GuideActivity">
 
     <Button android:id="@+id/profilebutton"
@@ -14,6 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="My Profile"
+        android:background="#0AF"
         android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -26,6 +28,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Create new tour"
+        android:background="#0F0"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/profilebutton"
         android:layout_centerHorizontal="true" />

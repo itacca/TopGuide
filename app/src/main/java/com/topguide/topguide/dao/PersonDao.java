@@ -1,5 +1,6 @@
 package com.topguide.topguide.dao;
 
+import com.topguide.topguide.model.Guide;
 import com.topguide.topguide.model.Tour;
 import com.topguide.topguide.model.Tourist;
 import com.topguide.topguide.model.User;
@@ -13,12 +14,14 @@ import java.util.ArrayList;
 public class PersonDao {
 
     private Tourist currentTourist;
+    private Guide currentGuide;
     private ArrayList<Tourist> tourists;
     private UserDao userDao;
     
     public PersonDao(UserDao ud) {
-        currentTourist = null;
-        userDao = ud;
+        this.currentTourist = null;
+        this.currentGuide = new Guide("MARKO", "MARKOVIC", "ADS",new User("bana", "12345", 1));
+        this.userDao = ud;
         setUpTourists();
         setUpUsers();
     }
@@ -55,6 +58,14 @@ public class PersonDao {
 
     public void setCurrentTourist(Tourist currentTourist) {
         this.currentTourist = currentTourist;
+    }
+
+    public Guide getCurrentGuide() {
+        return currentGuide;
+    }
+
+    public void setCurrentGuide(Guide currentGuide) {
+        this.currentGuide = currentGuide;
     }
 
     public ArrayList<Tourist> getTourists() {

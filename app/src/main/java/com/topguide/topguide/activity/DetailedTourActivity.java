@@ -1,5 +1,6 @@
 package com.topguide.topguide.activity;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.model.Tour;
+import com.topguide.topguide.model.Tourist;
 
 import java.text.SimpleDateFormat;
 
@@ -27,6 +29,8 @@ public class DetailedTourActivity extends AppCompatActivity {
     TextView tourStatus;
     TextView tourDescription;
     Button signUpButton;
+    boolean signed;
+    int DETAILED_TOUR_CODE = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,6 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         dateAndTime = (TextView) findViewById(R.id.dateandtime);
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy. HH:mm");
-
         dateAndTime.setText(formatter.format(currentTour.getStartDate()));
 
         tourRate = (TextView) findViewById(R.id.ratevalue);
@@ -73,20 +76,34 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourDescription.setText(currentTour.getDescription());
 
         signUpButton = (Button) findViewById(R.id.searchToursButton);
-        //signUpButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
 
-        /**
-         * if prijavljen na turu then DUGME POSTAJE ODJAVNO DUGME
-         *
-         * ELSE PRIJAVA (DOLE)
-         */
+        signed = false;
 
-/*
+        for(Tourist t : currentTour.getTourists()){
+
+            if(t.getUser().getUsername().equals(app.getUserDao().getCurrentUser().getUsername())){
+
+                signed = true;
+                signUpButton.setText("SIGN OUT OF TOUR");
+                break;
+            }
+        }
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //PRIJAVA NA TURU
+                if(signed)
+
+                    app.getPersonDao().getCurrentTourist().signOutOfTour(currentTour);
+
+                else
+
+                    app.getPersonDao().getCurrentTourist().signUpForTour(currentTour);
+
+                Intent next = new Intent(DetailedTourActivity.this, DetailedTourActivity.class);
+                next.putExtra("tour",currentTour);
+                startActivityForResult(next, DETAILED_TOUR_CODE);
             }
-        });*/
+        });
     }
 }

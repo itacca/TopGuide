@@ -20,6 +20,7 @@ public class Tour implements Serializable {
     Guide guide;
     ArrayList<Rate> rates;
     ArrayList<Comment> comments;
+    ArrayList<Tourist> tourists;
     State activeState;
 
 
@@ -37,21 +38,39 @@ public class Tour implements Serializable {
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
+        this.tourists = new ArrayList<>();
         this.activeState = new State();
     }
 
-    public Tour(String name, String cityName, Date startDate, int a) {
+    public Tour(String name, String cityName, Date startDate, int rate) {
         this.name = name;
         this.cityName = cityName;
         this.startDate = startDate;
-        this.rate = a;
+        this.rate = rate;
         this.price = new Pricelist();
         this.description = "";
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
+        this.tourists = new ArrayList<>();
         this.activeState = new State();
     }
+
+
+    public Tour(String name, String cityName, Date startDate, Pricelist price, String description, Guide guide) {
+        this.name = name;
+        this.cityName = cityName;
+        this.startDate = startDate;
+        this.rate = 0;
+        this.price = price;
+        this.description = description;
+        this.guide = guide;
+        this.rates = new ArrayList<>();
+        this.comments = new ArrayList<>();
+        this.tourists = new ArrayList<>();
+        this.activeState = new State();
+    }
+
 
     public String getName() {
         return name;
@@ -109,20 +128,28 @@ public class Tour implements Serializable {
         this.guide = guide;
     }
 
-    public ArrayList<Rate> getGrades() {
-        return rates;
-    }
-
-    public void setGrades(ArrayList<Rate> rates) {
-        this.rates = rates;
-    }
-
     public ArrayList<Comment> getComments() {
         return comments;
     }
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public ArrayList<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(ArrayList<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public ArrayList<Tourist> getTourists() {
+        return tourists;
+    }
+
+    public void setTourists(ArrayList<Tourist> tourists) {
+        this.tourists = tourists;
     }
 
     public State getActiveState() {

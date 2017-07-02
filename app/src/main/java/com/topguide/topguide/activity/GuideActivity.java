@@ -33,7 +33,9 @@ public class GuideActivity extends AppCompatActivity {
     ListView listView;
     Tour currentTour;
     TopGuideApp app;
+    boolean error;
     int DETAILED_TOUR_CODE = 18;
+    int CREATE_TOUR_CODE = 442;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +64,32 @@ public class GuideActivity extends AppCompatActivity {
         newTourButton = (Button) findViewById(R.id.newtourbutton);
         newTourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                //create new tour
+
+                error = false;
+                if(app.getPersonDao().getCurrentGuide().getRates().size() >= 10){
+
+                    if(app.getPersonDao().getCurrentGuide().getRate().getRate() < 2)
+
+                        error = true;
+                }
+
+                if(!error){
+
+                    Intent next = new Intent(GuideActivity.this, CreateTourActivity.class);
+                    startActivityForResult(next, CREATE_TOUR_CODE);
+                }
+
+                else
+
+                    newTourButton.setText("OPTION DISABLED!\n DUE TO LOW RATE YOU CAN NOT CREATE TOURS!");
+
             }
         });
 
         tourButton = (Button) findViewById(R.id.searchToursButton);
         tourButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+
                 String word = tourText.getText().toString();
                 ArrayList<Tour> searchedTours = app.getTourDao().searchTours(word);
                 TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
@@ -84,15 +105,15 @@ public class GuideActivity extends AppCompatActivity {
 
                 currentTour = app.getTourDao().getTours().get(i);
 
-                if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
+                //if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
                     //intent za svoju turu vodica
-                }
-                else{
+                //}
+                //else{
 
-                    Intent articleList = new Intent(getBaseContext(), DetailedTourActivity.class);
-                    articleList.putExtra("tour", currentTour);
-                    startActivityForResult(articleList, DETAILED_TOUR_CODE);
-                }
+                Intent next = new Intent(GuideActivity.this, DetailedTourActivity.class);
+                next.putExtra("tour", currentTour);
+                startActivityForResult(next, DETAILED_TOUR_CODE);
+                //}
             }
         });
     }
