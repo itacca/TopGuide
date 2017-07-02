@@ -75,19 +75,9 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourDescription = (TextView) findViewById(R.id.tourdescription);
         tourDescription.setText(currentTour.getDescription());
 
-        signUpButton = (Button) findViewById(R.id.searchToursButton);
+        signUpButton = (Button) findViewById(R.id.signupbutton);
 
-        signed = false;
-
-        for(Tourist t : currentTour.getTourists()){
-
-            if(t.getUser().getUsername().equals(app.getUserDao().getCurrentUser().getUsername())){
-
-                signed = true;
-                signUpButton.setText("SIGN OUT OF TOUR");
-                break;
-            }
-        }
+        setUpButtonSettings();
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -100,10 +90,26 @@ public class DetailedTourActivity extends AppCompatActivity {
 
                     app.getPersonDao().getCurrentTourist().signUpForTour(currentTour);
 
-                Intent next = new Intent(DetailedTourActivity.this, DetailedTourActivity.class);
-                next.putExtra("tour",currentTour);
-                startActivityForResult(next, DETAILED_TOUR_CODE);
+
+                setUpButtonSettings();
             }
         });
+    }
+
+    private void setUpButtonSettings() {
+        signUpButton.setText("Sign up for tour");
+
+        signed = false;
+
+        for(Tourist t : currentTour.getTourists()){
+
+            if(t.getUser().getUsername().equals(app.getUserDao().getCurrentUser().getUsername())){
+
+                signed = true;
+                signUpButton.setText("Sign out of tour");
+                break;
+            }
+        }
+
     }
 }
