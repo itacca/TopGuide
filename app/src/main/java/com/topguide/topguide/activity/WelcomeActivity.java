@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
+import com.topguide.topguide.model.User;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,8 +31,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
     private void init() {
 
-        loginBtn = (Button) findViewById(R.id.login_button);
-        registerBtn = (Button) findViewById(R.id.register_button);
+        loginBtn = (Button) findViewById(R.id.welcome_login);
+        registerBtn = (Button) findViewById(R.id.welcome_register);
         guestBtn = (Button) findViewById(R.id.welcome_guest);
 
         loginBtn.setOnClickListener(WelcomeActivity.this);
@@ -43,19 +44,20 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.login_button:
-                Intent intent = new Intent(this, WelcomeActivity.class);
+            case R.id.welcome_login:
+                Intent intent = new Intent(this, LoginActivity.class);
                 startActivityForResult(intent, LOGIN_START_CODE);
                 break;
-            case R.id.register_button:
-                Intent intent2 = new Intent(this, WelcomeActivity.class);
+            case R.id.welcome_register:
+                Intent intent2 = new Intent(this, RegisterActivity.class);
                 startActivityForResult(intent2, REGISTER_START_CODE);
                 break;
             case R.id.welcome_guest:
                 TopGuideApp app = (TopGuideApp) getApplicationContext();
-                app.getUserDao().setCurrentUser(null);
+                app.getUserDao().setCurrentUser(new User());
                 Intent intent3 = new Intent();
                 setResult(RESULT_OK, intent3);
+                finish();
                 break;
         }
     }
@@ -67,6 +69,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 if (data.getExtras().getBoolean("successful")) {
                     Intent intent = new Intent();
                     setResult(RESULT_OK, intent);
+                    finish();
                 }
             }
         } else if (requestCode == REGISTER_START_CODE) {
@@ -74,6 +77,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 if (data.getExtras().getBoolean("successful")) {
                     Intent intent2 = new Intent();
                     setResult(RESULT_OK, intent2);
+                    finish();
                 }
             }
         }

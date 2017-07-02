@@ -23,19 +23,21 @@ public class MainActivity extends AppCompatActivity {
 
         app = (TopGuideApp) getApplication();
 
+        /*
         Intent intent = new Intent(this, GuideActivity.class);
         startActivityForResult(intent, WELCOME_START_CODE);
+        */
 
-        //init();
+        init();
     }
 
     private void init() {
         // if no user is logged in
         if (app.getUserDao().getCurrentUser() == null) {
-            Intent intent = new Intent(this, WelcomeActivity.class);
+            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivityForResult(intent, WELCOME_START_CODE);
         } else {
-            // u zavisnosti od uloge ce se otvoriti prozor za odredjenog korisnika
+            openActivityForCurrentUser();
         }
     }
 
@@ -43,17 +45,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == WELCOME_START_CODE) {
             if (resultCode == RESULT_OK) {
-                if (app.getUserDao().getCurrentUser() == null) {
-                    Intent intent = new Intent(this, UnregisteredActivity.class);
-                    startActivity(intent);
-                } else if (app.getUserDao().getCurrentUser().getRole() == User.Role.TOURIST) {
-                    Intent intent = new Intent(this, TouristActivity.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(this, GuideActivity.class);
-                    startActivity(intent);
-                }
+                openActivityForCurrentUser();
             }
+        }
+    }
+
+    private void openActivityForCurrentUser() {
+        if (app.getUserDao().getCurrentUser().getRole() == User.Role.GUEST) {
+            Intent intent = new Intent(this, UnregisteredActivity.class);
+            startActivity(intent);
+        } else if (app.getUserDao().getCurrentUser().getRole() == User.Role.TOURIST) {
+            Intent intent = new Intent(this, TouristActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, GuideActivity.class);
+            startActivity(intent);
         }
     }
 }

@@ -61,7 +61,7 @@ public class TouristActivity extends AppCompatActivity {
         profileButton = (Button) findViewById(R.id.profilebutton);
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(context, TouristProfileActivity.class);
+                Intent intent = new Intent(TouristActivity.this, TouristProfileActivity.class);
                 startActivityForResult(intent, TOURIST_PROFILE_CODE);
             }
         });
@@ -84,7 +84,6 @@ public class TouristActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 currentTour = app.getTourDao().getTours().get(i);
-
 
                 Intent next = new Intent(TouristActivity.this, DetailedTourActivity.class);
                 next.putExtra("tour",currentTour);

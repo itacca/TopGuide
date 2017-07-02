@@ -21,9 +21,9 @@ public class TopGuideApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        userDao = new UserDao();
-        personDao = new PersonDao(userDao);
+        userDao = new UserDao(this);
         tourDao = new TourDao();
+        personDao = new PersonDao(userDao, tourDao);
     }
 
     public UserDao getUserDao() {

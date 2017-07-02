@@ -17,12 +17,10 @@ public class Tour implements Serializable {
     private double rate;
     private Pricelist price;
     private String description;
-    Guide guide;
-    ArrayList<Rate> rates;
-    ArrayList<Comment> comments;
-    ArrayList<Tourist> tourists;
-    State activeState;
-
+    private Guide guide;
+    private ArrayList<Rate> rates;
+    private ArrayList<Comment> comments;
+    private State activeState;
 
     public Tour() {
 
@@ -32,13 +30,13 @@ public class Tour implements Serializable {
         this.name = name;
         this.cityName = cityName;
         this.startDate = startDate;
-        this.rate = 0;
-        this.price = new Pricelist();
+        this.rate = 5;
+        this.price = new Pricelist(1000, new Date());
         this.description = "*** Opsti opis ture***";
-        this.guide = new Guide();
+        this.guide = null;
         this.rates = new ArrayList<>();
+        this.rates.add(new Rate(5.0));
         this.comments = new ArrayList<>();
-        this.tourists = new ArrayList<>();
         this.activeState = new State();
     }
 
@@ -52,7 +50,6 @@ public class Tour implements Serializable {
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.tourists = new ArrayList<>();
         this.activeState = new State();
     }
 
@@ -67,7 +64,6 @@ public class Tour implements Serializable {
         this.guide = guide;
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.tourists = new ArrayList<>();
         this.activeState = new State();
     }
 
@@ -142,14 +138,6 @@ public class Tour implements Serializable {
 
     public void setRates(ArrayList<Rate> rates) {
         this.rates = rates;
-    }
-
-    public ArrayList<Tourist> getTourists() {
-        return tourists;
-    }
-
-    public void setTourists(ArrayList<Tourist> tourists) {
-        this.tourists = tourists;
     }
 
     public State getActiveState() {

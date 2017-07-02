@@ -8,20 +8,20 @@
 
     <TextView
         android:id="@+id/text_view1"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Username: "
-        android:textStyle="bold"
         android:textColor="@color/colorPrimary"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <EditText
-        android:layout_alignTop="@id/text_view1"
-        android:layout_marginTop="30dp"
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/text_view1"
+        android:layout_marginTop="30dp"
         android:hint="Enter your username" />
 
     <TextView
@@ -31,17 +31,18 @@
         android:layout_alignTop="@+id/username"
         android:layout_marginTop="75dp"
         android:text="Password"
-        android:textStyle="bold"
         android:textColor="@color/colorPrimary"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
         android:layout_alignTop="@+id/text_view2"
         android:layout_marginTop="30dp"
-        android:hint="Enter your password"/>
+        android:hint="Enter your password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/login_button"
@@ -51,6 +52,6 @@
         android:layout_marginTop="75dp"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary" />
 
 </RelativeLayout>

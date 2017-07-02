@@ -44,4 +44,8 @@ public class Guide extends Tourist implements Serializable{
     public void setRates(ArrayList<Rate> rates) {
         this.rates = rates;
     }
+
+    public void addCreatedTour(Tour t) {
+        tours.add(t);
+    }
 }

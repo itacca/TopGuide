@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         login = (Button) findViewById(R.id.login_button);
 
-        login.setOnClickListener(this);
+        login.setOnClickListener(LoginActivity.this);
 
     }
 
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String textUsername = username.getText().toString();
         String textPassword = password.getText().toString();
 
-        if(textUsername == "" || textPassword == "") {
+        if(textUsername.matches("") || textPassword.matches("")) {
             Context context = getApplicationContext();
             CharSequence text = "Fields should not be empty!";
             int duration = Toast.LENGTH_SHORT;
@@ -88,5 +88,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent();
         intent.putExtra("successful", isSuccessful);
         setResult(RESULT_OK, intent);
+        finish();
     }
 }

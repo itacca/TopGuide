@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String textLastName = lastname.getText().toString();
         String textEmail = email.getText().toString();
 
-        if(textUsername == "" || textPassword == "" || textName == "" || textLastName == "" || textEmail == "" ) {
+        if(textUsername.matches("") || textPassword.matches("") || textName.matches("") || textLastName.matches("") || textEmail.matches("")) {
             Context context = getApplicationContext();
             CharSequence text = "Fields should not be empty!";
             int duration = Toast.LENGTH_SHORT;
@@ -87,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         isSuccessful = true;
 
         setUpResult();
+        finish();
     }
 
     @Override

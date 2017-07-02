@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class Tourist implements Serializable{
 
-    private String name;
-    private String lastname;
-    private String email;
-    private User user;
-    private ArrayList<Tour> tours;
+    protected String name;
+    protected String lastname;
+    protected String email;
+    protected User user;
+    protected ArrayList<Tour> tours;
 
     public Tourist() {
         this.name = null;
@@ -94,21 +94,15 @@ public class Tourist implements Serializable{
 
         boolean signed = false;
 
-        for(Tourist t : tour.getTourists()){
-
-            if(t.getUser().getUsername().equals(this.user.getUsername())){
-
+        for (Tour t : tours) {
+            if (t.equals(tour)) {
                 signed = true;
                 break;
             }
         }
 
         if(!signed) {
-
-            this.tours.add(tour);
-            ArrayList<Tourist> tourists = tour.getTourists();
-            tourists.add(this);
-            tour.setTourists(tourists);
+            tours.add(tour);
         }
     }
 
@@ -116,21 +110,24 @@ public class Tourist implements Serializable{
 
         boolean signed = false;
 
-        for(Tourist t : tour.getTourists()){
-
-            if(t.getUser().getUsername().equals(this.user.getUsername())){
-
+        for(Tour t : tours){
+            if(t.equals(tour)) {
                 signed = true;
                 break;
             }
         }
 
         if(signed) {
-
             this.tours.remove(tour);
-            ArrayList<Tourist> tourists = tour.getTourists();
-            tourists.remove(this);
-            tour.setTourists(tourists);
         }
+    }
+
+    public boolean checkAttendenceOnTour(Tour t) {
+        for (Tour tour : tours) {
+            if (tour.equals(t)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
+import com.topguide.topguide.model.Guide;
 import com.topguide.topguide.model.Pricelist;
 import com.topguide.topguide.model.Tour;
 

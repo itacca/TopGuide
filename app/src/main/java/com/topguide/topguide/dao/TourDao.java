@@ -1,5 +1,7 @@
 package com.topguide.topguide.dao;
 import com.topguide.topguide.model.Tour;
+import com.topguide.topguide.model.Tourist;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

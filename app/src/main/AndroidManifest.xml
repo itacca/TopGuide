@@ -23,7 +23,8 @@
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.WelcomeActivity" />
         <activity android:name=".activity.DetailedTourActivity" />
-        <activity android:name=".activity.GuideActivity"></activity>
+        <activity android:name=".activity.GuideActivity" />
+        <activity android:name=".activity.TouristProfileActivity" ></activity>
     </application>
 
 </manifest>

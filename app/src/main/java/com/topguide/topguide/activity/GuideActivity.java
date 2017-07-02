@@ -62,7 +62,7 @@ public class GuideActivity extends AppCompatActivity {
         tourText = (EditText) findViewById(R.id.edittext);
 
 
-        profileButton = (Button) findViewById(R.id.profilebutton);
+        profileButton = (Button) findViewById(R.id.profilebutton_guide);
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(context, GuideProfileActivity.class);

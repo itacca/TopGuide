@@ -19,23 +19,18 @@ public class TouristProfileActivity extends AppCompatActivity {
     private Button firstNameButton;
     private Button lastNameButton;
     private Button emailButton;
-
     private Button toursButton;
     private Button becomeGuideButton;
 
     private TopGuideApp app;
-    private Context context;
 
     private static final int TOURIST_TOURS_CODE = 77;
-
-    //Tourist tourist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourist_profile);
 
-        context = this;
         init();
     }
 
@@ -48,7 +43,7 @@ public class TouristProfileActivity extends AppCompatActivity {
         emailButton = (Button) findViewById(R.id.emailbutton);
 
         toursButton = (Button) findViewById(R.id.toursbutton);
-        becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
+        //becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
 
         User user = new User("pera123", "321");
         Tourist tourist = new Tourist("Petar", "Petrovic", "petarpetrovic@gmail.com", user);
@@ -65,7 +60,7 @@ public class TouristProfileActivity extends AppCompatActivity {
         toursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TouristToursActivity.class);
+                Intent intent = new Intent(TouristProfileActivity.this, TouristToursActivity.class);
                 startActivityForResult(intent, TOURIST_TOURS_CODE);
             }
         });

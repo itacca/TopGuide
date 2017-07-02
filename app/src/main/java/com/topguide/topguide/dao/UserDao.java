@@ -1,5 +1,8 @@
 package com.topguide.topguide.dao;
 
+import android.content.Context;
+
+import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.model.User;
 
 import java.util.ArrayList;
@@ -12,10 +15,12 @@ public class UserDao {
 
     private User currentUser;
     private ArrayList<User> users;
+    private TopGuideApp app;
 
-    public UserDao() {
+    public UserDao(TopGuideApp app) {
         currentUser = null;
         users = new ArrayList<>();
+        this.app = app;
     }
 
     public ArrayList<User> getUsers() {
@@ -34,6 +39,8 @@ public class UserDao {
         for (User u : users) {
             if (u.getUsername().equals(username)) {
                 if (u.getPassword().equals(password)) {
+                    setCurrentUser(u);
+                    app.getPersonDao().setUpCurrentTourist(u.getUsername());
                     return true;
                 } else {
                     return false;

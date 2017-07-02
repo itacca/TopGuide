@@ -30,7 +30,6 @@ public class DetailedTourActivity extends AppCompatActivity {
     TextView tourDescription;
     Button signUpButton;
     boolean signed;
-    int DETAILED_TOUR_CODE = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,14 +100,10 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         signed = false;
 
-        for(Tourist t : currentTour.getTourists()){
+        signed = app.getPersonDao().getCurrentTourist().checkAttendenceOnTour(currentTour);
 
-            if(t.getUser().getUsername().equals(app.getUserDao().getCurrentUser().getUsername())){
-
-                signed = true;
-                signUpButton.setText("Sign out of tour");
-                break;
-            }
+        if (signed) {
+            signUpButton.setText("Sign out of tour");
         }
 
     }

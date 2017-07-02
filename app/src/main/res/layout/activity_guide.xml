@@ -7,7 +7,7 @@
     android:focusableInTouchMode="true"
     tools:context="com.topguide.topguide.activity.GuideActivity">
 
-    <Button android:id="@+id/profilebutton"
+    <Button android:id="@+id/profilebutton_guide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         android:text="Create new tour"
         android:background="#0F0"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/profilebutton"
+        android:layout_below="@+id/profilebutton_guide"
         android:layout_centerHorizontal="true" />
 
     <TextView
