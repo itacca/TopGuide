@@ -31,7 +31,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"
-        android:text="Enter city name..."
+        android:hint="Enter place..."
         android:inputType="text"
         android:layout_below="@+id/searchtours"
         android:layout_marginLeft="5dp" />

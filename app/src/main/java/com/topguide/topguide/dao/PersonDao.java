@@ -52,6 +52,7 @@ public class PersonDao {
         for (Tour t : tourDao.getTours()) {
             t.setGuide(someGuide);
             someGuide.addCreatedTour(t);
+            currentGuide = someGuide;
             tourists.get(number%3).signUpForTour(t);
             tourists.get((number+1)%3).signUpForTour(t);
             number++;

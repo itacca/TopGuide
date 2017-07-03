@@ -12,7 +12,7 @@ import java.util.Date;
 public class Tour implements Serializable {
 
     private String name;
-    private String cityName;
+    private Place placeName;
     private Date startDate;
     private double rate;
     private Pricelist price;
@@ -26,9 +26,9 @@ public class Tour implements Serializable {
 
     }
 
-    public Tour(String name, String cityName, Date startDate) {
+    public Tour(String name, String placeName, Date startDate) {
         this.name = name;
-        this.cityName = cityName;
+        this.placeName = new Place(placeName);
         this.startDate = startDate;
         this.rate = 5;
         this.price = new Pricelist(1000, new Date());
@@ -40,9 +40,9 @@ public class Tour implements Serializable {
         this.activeState = new State();
     }
 
-    public Tour(String name, String cityName, Date startDate, int rate) {
+    public Tour(String name, String placeName, Date startDate, int rate) {
         this.name = name;
-        this.cityName = cityName;
+        this.placeName = new Place(placeName);
         this.startDate = startDate;
         this.rate = rate;
         this.price = new Pricelist();
@@ -54,9 +54,9 @@ public class Tour implements Serializable {
     }
 
 
-    public Tour(String name, String cityName, Date startDate, Pricelist price, String description, Guide guide) {
+    public Tour(String name, String placeName, Date startDate, Pricelist price, String description, Guide guide) {
         this.name = name;
-        this.cityName = cityName;
+        this.placeName = new Place(placeName);
         this.startDate = startDate;
         this.rate = 0;
         this.price = price;
@@ -76,12 +76,12 @@ public class Tour implements Serializable {
         this.name = name;
     }
 
-    public String getCityName() {
-        return cityName;
+    public Place getPlaceName() {
+        return placeName;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityName(Place placeName) {
+        this.placeName = placeName;
     }
 
     public Date getStartDate() {

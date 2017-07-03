@@ -20,7 +20,7 @@ public class DetailedTourActivity extends AppCompatActivity {
     Tour currentTour;
     TopGuideApp app;
     TextView tourName;
-    TextView cityName;
+    TextView placeName;
     TextView dateAndTime;
     TextView tourRate;
     TextView guideName;
@@ -48,8 +48,8 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourName = (TextView) findViewById(R.id.tourname);
         tourName.setText(currentTour.getName());
 
-        cityName = (TextView) findViewById(R.id.cityname);
-        cityName.setText(currentTour.getCityName());
+        placeName = (TextView) findViewById(R.id.placename);
+        placeName.setText(currentTour.getPlaceName().getName());
 
         dateAndTime = (TextView) findViewById(R.id.dateandtime);
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy. HH:mm");
