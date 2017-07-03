@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
+import com.topguide.topguide.model.Guide;
 import com.topguide.topguide.model.Tourist;
 import com.topguide.topguide.model.User;
 
@@ -37,6 +38,7 @@ public class GuideProfileActivity extends AppCompatActivity {
     }
 
     public void init(){
+        app = (TopGuideApp) getApplication();
 
         usernameButton = (Button) findViewById(R.id.usernamebuttonguide);
         passwordButton = (Button) findViewById(R.id.passwordbuttonguide);
@@ -46,16 +48,13 @@ public class GuideProfileActivity extends AppCompatActivity {
 
         toursButton = (Button) findViewById(R.id.toursbuttonguide);
 
-        User user = new User("ana123", "321");
-        Tourist tourist = new Tourist("Ana", "Ivanovic", "anaivanovic@gmail.com", user);
+        Guide guide = app.getPersonDao().getCurrentGuide();
 
-        //Tourist tourist1 = app.getPersonDao().getCurrentTourist();
-
-        usernameButton.setText(tourist.getUser().getUsername());
-        passwordButton.setText(tourist.getUser().getPassword());
-        firstNameButton.setText(tourist.getName());
-        lastNameButton.setText(tourist.getLastname());
-        emailButton.setText(tourist.getEmail());
+        usernameButton.setText(guide.getUser().getUsername());
+        passwordButton.setText(guide.getUser().getPassword());
+        firstNameButton.setText(guide.getName());
+        lastNameButton.setText(guide.getLastname());
+        emailButton.setText(guide.getEmail());
 
 
         toursButton.setOnClickListener(new View.OnClickListener() {

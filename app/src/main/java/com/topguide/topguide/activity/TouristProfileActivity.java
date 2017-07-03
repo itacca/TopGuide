@@ -35,6 +35,7 @@ public class TouristProfileActivity extends AppCompatActivity {
     }
 
     public void init(){
+        app = (TopGuideApp) getApplication();
 
         usernameButton = (Button) findViewById(R.id.usernamebuttontourist);
         passwordButton = (Button) findViewById(R.id.passwordbuttontourist);
@@ -43,12 +44,8 @@ public class TouristProfileActivity extends AppCompatActivity {
         emailButton = (Button) findViewById(R.id.emailbuttontourist);
 
         toursButton = (Button) findViewById(R.id.toursbuttontourist);
-        //becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
 
-        User user = new User("pera123", "321");
-        Tourist tourist = new Tourist("Petar", "Petrovic", "petarpetrovic@gmail.com", user);
-
-        //Tourist tourist1 = app.getPersonDao().getCurrentTourist();
+        Tourist tourist = app.getPersonDao().getCurrentTourist();
 
         usernameButton.setText(tourist.getUser().getUsername());
         passwordButton.setText(tourist.getUser().getPassword());
