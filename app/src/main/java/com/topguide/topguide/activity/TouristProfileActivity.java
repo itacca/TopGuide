@@ -36,13 +36,13 @@ public class TouristProfileActivity extends AppCompatActivity {
 
     public void init(){
 
-        usernameButton = (Button) findViewById(R.id.usernamebutton);
-        passwordButton = (Button) findViewById(R.id.passwordbutton);
-        firstNameButton = (Button) findViewById(R.id.namebutton);
-        lastNameButton = (Button) findViewById(R.id.lastnamebutton);
-        emailButton = (Button) findViewById(R.id.emailbutton);
+        usernameButton = (Button) findViewById(R.id.usernamebuttontourist);
+        passwordButton = (Button) findViewById(R.id.passwordbuttontourist);
+        firstNameButton = (Button) findViewById(R.id.namebuttontourist);
+        lastNameButton = (Button) findViewById(R.id.lastnamebuttontourist);
+        emailButton = (Button) findViewById(R.id.emailbuttontourist);
 
-        toursButton = (Button) findViewById(R.id.toursbutton);
+        toursButton = (Button) findViewById(R.id.toursbuttontourist);
         //becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
 
         User user = new User("pera123", "321");
@@ -65,11 +65,11 @@ public class TouristProfileActivity extends AppCompatActivity {
             }
         });
 
-        becomeGuideButton.setOnClickListener(new View.OnClickListener() {
+/*        becomeGuideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
+        });*/
     }
 }

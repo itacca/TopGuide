@@ -38,16 +38,16 @@ public class GuideProfileActivity extends AppCompatActivity {
 
     public void init(){
 
-        usernameButton = (Button) findViewById(R.id.usernamebutton);
-        passwordButton = (Button) findViewById(R.id.passwordbutton);
-        firstNameButton = (Button) findViewById(R.id.namebutton);
-        lastNameButton = (Button) findViewById(R.id.lastnamebutton);
-        emailButton = (Button) findViewById(R.id.emailbutton);
+        usernameButton = (Button) findViewById(R.id.usernamebuttonguide);
+        passwordButton = (Button) findViewById(R.id.passwordbuttonguide);
+        firstNameButton = (Button) findViewById(R.id.namebuttonguide);
+        lastNameButton = (Button) findViewById(R.id.lastnamebuttonguide);
+        emailButton = (Button) findViewById(R.id.emailbuttonguide);
 
-        toursButton = (Button) findViewById(R.id.toursbutton);
+        toursButton = (Button) findViewById(R.id.toursbuttonguide);
 
-        User user = new User("pera123", "321");
-        Tourist tourist = new Tourist("Petar", "Petrovic", "petarpetrovic@gmail.com", user);
+        User user = new User("ana123", "321");
+        Tourist tourist = new Tourist("Ana", "Ivanovic", "anaivanovic@gmail.com", user);
 
         //Tourist tourist1 = app.getPersonDao().getCurrentTourist();
 

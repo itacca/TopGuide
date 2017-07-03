@@ -19,7 +19,7 @@
     <Button
         android:layout_alignTop="@id/text_view_tourist"
         android:layout_marginTop="20dp"
-        android:id="@+id/usernamebutton"
+        android:id="@+id/usernamebuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false" />
@@ -28,7 +28,7 @@
         android:id="@+id/text_view_tourist1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/usernamebutton"
+        android:layout_alignTop="@+id/usernamebuttontourist"
         android:layout_marginTop="60dp"
         android:text="Password:"
         android:textStyle="bold"
@@ -39,14 +39,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/passwordbutton"
+        android:id="@+id/passwordbuttontourist"
         android:layout_alignTop="@+id/text_view_tourist1"
         android:layout_marginTop="20dp"
         android:textAllCaps="false" />
 
     <TextView
         android:id="@+id/text_view_tourist2"
-        android:layout_alignTop="@+id/passwordbutton"
+        android:layout_alignTop="@+id/passwordbuttontourist"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,14 +58,14 @@
     <Button
         android:layout_alignTop="@id/text_view_tourist2"
         android:layout_marginTop="20dp"
-        android:id="@+id/namebutton"
+        android:id="@+id/namebuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false" />
 
     <TextView
         android:id="@+id/text_view_tourist3"
-        android:layout_alignTop="@+id/namebutton"
+        android:layout_alignTop="@+id/namebuttontourist"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,14 +77,14 @@
     <Button
         android:layout_alignTop="@id/text_view_tourist3"
         android:layout_marginTop="20dp"
-        android:id="@+id/lastnamebutton"
+        android:id="@+id/lastnamebuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false" />
 
     <TextView
         android:id="@+id/text_view_tourist4"
-        android:layout_alignTop="@+id/lastnamebutton"
+        android:layout_alignTop="@+id/lastnamebuttontourist"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,17 +96,17 @@
     <Button
         android:layout_alignTop="@id/text_view_tourist4"
         android:layout_marginTop="20dp"
-        android:id="@+id/emailbutton"
+        android:id="@+id/emailbuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false" />
 
 
     <Button
-        android:id="@+id/toursbutton"
+        android:id="@+id/toursbuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/emailbutton"
+        android:layout_alignTop="@+id/emailbuttontourist"
         android:layout_marginTop="90dp"
         android:text="See your tours"
         android:textAllCaps="false"
