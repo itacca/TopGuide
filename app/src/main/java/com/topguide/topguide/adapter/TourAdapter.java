@@ -61,7 +61,7 @@ public class TourAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         holder.tourName.setText(currentTour.getName());
-        holder.cityName.setText(currentTour.getCityName());
+        holder.cityName.setText(currentTour.getPlaceName().getName());
         holder.startDate.setText(currentTour.getStartDate().toString());
 
         return view;

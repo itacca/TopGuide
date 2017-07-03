@@ -21,7 +21,7 @@ import java.util.Date;
 public class CreateTourActivity extends AppCompatActivity {
 
     EditText tourNameText;
-    EditText cityNameText;
+    EditText placeNameText;
     EditText dateText;
     EditText priceText;
     EditText descriptionText;
@@ -45,7 +45,7 @@ public class CreateTourActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         tourNameText = (EditText) findViewById(R.id.insertourname);
-        cityNameText = (EditText) findViewById(R.id.insertcityname);
+        placeNameText = (EditText) findViewById(R.id.insertplacename);
         dateText = (EditText) findViewById(R.id.insertdate);
         priceText = (EditText) findViewById(R.id.insertprice);
         descriptionText = (EditText) findViewById(R.id.insertdescription);
@@ -55,7 +55,7 @@ public class CreateTourActivity extends AppCompatActivity {
         createTourButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(isEmpty(tourNameText) || isEmpty(cityNameText) || isEmpty(dateText) || isEmpty(priceText) || isEmpty(descriptionText))
+                if(isEmpty(tourNameText) || isEmpty(placeNameText) || isEmpty(dateText) || isEmpty(priceText) || isEmpty(descriptionText))
 
                     statusText.setText("Error: Not all fields have been filled! \nPlease fill all the fileds with correct information!");
 
@@ -71,7 +71,7 @@ public class CreateTourActivity extends AppCompatActivity {
                             statusText.setText("Error: Date and time error detected, wrong input! \nPlease insert correct date and time of tour!");
 
                         else {
-                            Tour newTour = new Tour(tourNameText.getText().toString(), cityNameText.getText().toString(),
+                            Tour newTour = new Tour(tourNameText.getText().toString(), placeNameText.getText().toString(),
                                     inputDate, new Pricelist(Double.parseDouble(priceText.getText().toString()), inputDate),
                                     descriptionText.getText().toString(), app.getPersonDao().getCurrentGuide());
 

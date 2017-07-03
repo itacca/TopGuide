@@ -35,7 +35,7 @@ public class TourDao {
 
         for(Tour t : tours){
 
-            if(t.getCityName().toLowerCase().contains(word.toLowerCase()))
+            if(t.getPlaceName().getName().toLowerCase().contains(word.toLowerCase()))
 
                 searchedTours.add(t);
         }
