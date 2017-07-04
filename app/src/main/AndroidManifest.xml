@@ -3,10 +3,10 @@
     package="com.topguide.topguide">
 
     <application
+        android:name=".TopGuideApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".TopGuideApp"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,7 +24,8 @@
         <activity android:name=".activity.WelcomeActivity" />
         <activity android:name=".activity.DetailedTourActivity" />
         <activity android:name=".activity.GuideActivity" />
-        <activity android:name=".activity.TouristProfileActivity" ></activity>
+        <activity android:name=".activity.TouristProfileActivity" />
+        <activity android:name=".activity.EditTourActivity"></activity>
     </application>
 
 </manifest>

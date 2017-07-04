@@ -35,9 +35,9 @@ public class TourDao {
 
         for(Tour t : tours){
 
-            if(t.getPlaceName().getName().toLowerCase().contains(word.toLowerCase()))
-
+            if(t.getPlaceName().getName().toLowerCase().contains(word.toLowerCase())) {
                 searchedTours.add(t);
+            }
         }
 
         Collections.sort(searchedTours, new Tour.Compare());

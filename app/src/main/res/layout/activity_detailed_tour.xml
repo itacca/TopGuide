@@ -6,235 +6,247 @@
     android:layout_height="match_parent"
     tools:context="com.topguide.topguide.activity.DetailedTourActivity">
 
-    <TextView android:id="@+id/tourname"
+    <TextView
+        android:id="@+id/tourname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text=""
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/placelabel"
+    <TextView
+        android:id="@+id/placelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/placename"
+        android:layout_alignBottom="@+id/placename"
+        android:layout_alignLeft="@+id/datelabel"
+        android:layout_alignStart="@+id/datelabel"
         android:text="Place:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_alignBaseline="@+id/placename"
-        android:layout_alignBottom="@+id/placename"
-        android:layout_alignLeft="@+id/datelabel"
-        android:layout_alignStart="@+id/datelabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/placename"
+    <TextView
+        android:id="@+id/placename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tourname"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/tourname"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/datelabel"
+    <TextView
+        android:id="@+id/datelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/placelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Date and time:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/placelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/dateandtime"
+    <TextView
+        android:id="@+id/dateandtime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/placename"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/placename"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/ratelabel"
+    <TextView
+        android:id="@+id/ratelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/datelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Tour rate:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/datelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/ratevalue"
+    <TextView
+        android:id="@+id/ratevalue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/dateandtime"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/dateandtime"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/guidelabel"
+    <TextView
+        android:id="@+id/guidelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ratelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Guide:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/ratelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/guidename"
+    <TextView
+        android:id="@+id/guidename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ratevalue"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/ratevalue"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/guideratelabel"
+    <TextView
+        android:id="@+id/guideratelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/guidelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Guide rate:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/guidelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/guideratevalue"
+    <TextView
+        android:id="@+id/guideratevalue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/guidename"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/guidename"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/pricelabel"
+    <TextView
+        android:id="@+id/pricelabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/guideratelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Price:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/guideratelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/tourprice"
+    <TextView
+        android:id="@+id/tourprice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/guideratevalue"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/guideratevalue"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/statuslabel"
+    <TextView
+        android:id="@+id/statuslabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/pricelabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Status:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/pricelabel"
-        android:layout_marginLeft="5dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:id="@+id/tourstatus"
+    <TextView
+        android:id="@+id/tourstatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tourprice"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:text=""
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/tourprice"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart = "120dp"
-        android:layout_marginLeft="55dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/descriptionlabel"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/statuslabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Description:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/statuslabel"
-        android:layout_marginLeft="5dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tourdescription"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_below="@+id/descriptionlabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/descriptionlabel"
-        android:layout_marginLeft="5dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button android:id="@+id/signupbutton"
+    <Button
+        android:id="@+id/signupbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Sign up for tour"
-        android:textAllCaps="false"
+        android:layout_below="@+id/tourdescription"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="#F30"
-        android:layout_below="@+id/tourdescription"
-        android:layout_centerHorizontal="true" />
+        android:text="Sign up for tour"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

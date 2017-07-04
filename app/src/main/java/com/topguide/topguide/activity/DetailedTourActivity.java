@@ -78,6 +78,8 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         setUpButtonSettings();
 
+        setUpStatus();
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -95,6 +97,10 @@ public class DetailedTourActivity extends AppCompatActivity {
         });
     }
 
+    private void setUpStatus() {
+        tourStatus.setText(currentTour.getState().askedForStatus());
+    }
+
     private void setUpButtonSettings() {
         signUpButton.setText("Sign up for tour");
 
@@ -106,5 +112,13 @@ public class DetailedTourActivity extends AppCompatActivity {
             signUpButton.setText("Sign out of tour");
         }
 
+        if (!performSignUpCheck()) {
+            signUpButton.setClickable(false);
+        }
+
+    }
+
+    private boolean performSignUpCheck() {
+        return currentTour.getState().signUpCheck();
     }
 }

@@ -1,5 +1,10 @@
 package com.topguide.topguide.model;
 
+import android.support.v7.view.menu.ActionMenuItem;
+
+import com.topguide.topguide.model.state.ActiveState;
+import com.topguide.topguide.model.state.State;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,7 +25,8 @@ public class Tour implements Serializable {
     private Guide guide;
     private ArrayList<Rate> rates;
     private ArrayList<Comment> comments;
-    private State activeState;
+    private State state;
+
 
     public Tour() {
 
@@ -37,7 +43,7 @@ public class Tour implements Serializable {
         this.rates = new ArrayList<>();
         this.rates.add(new Rate(5.0));
         this.comments = new ArrayList<>();
-        this.activeState = new State();
+        this.state = new ActiveState();
     }
 
     public Tour(String name, String placeName, Date startDate, int rate) {
@@ -50,7 +56,7 @@ public class Tour implements Serializable {
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.activeState = new State();
+        this.state = new ActiveState();
     }
 
 
@@ -64,7 +70,7 @@ public class Tour implements Serializable {
         this.guide = guide;
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.activeState = new State();
+        this.state = new ActiveState();
     }
 
 
@@ -140,23 +146,12 @@ public class Tour implements Serializable {
         this.rates = rates;
     }
 
-    public State getActiveState() {
-        return activeState;
+    public State getState() {
+        return state;
     }
 
-    public void setActiveState(State activeState) {
-        this.activeState = activeState;
-    }
-
-    public static class Compare implements Comparator<Tour> {
-
-        @Override
-        public int compare(Tour t1, Tour t2) {
-
-            if (t1.getRate() < t2.getRate()) return -1;
-            if (t1.getRate() > t2.getRate()) return 1;
-            return 0;
-        }
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void calculateRate(int rate){
@@ -171,4 +166,22 @@ public class Tour implements Serializable {
         this.rate = sum / this.rates.size();
     }
 
+    public boolean returnPositiveStatus() {
+        return true;
+    }
+
+    public boolean returnNegativeStatus() {
+        return false;
+    }
+
+    public static class Compare implements Comparator<Tour> {
+
+        @Override
+        public int compare(Tour t1, Tour t2) {
+
+            if (t1.getRate() < t2.getRate()) return -1;
+            if (t1.getRate() > t2.getRate()) return 1;
+            return 0;
+        }
+    }
 }
