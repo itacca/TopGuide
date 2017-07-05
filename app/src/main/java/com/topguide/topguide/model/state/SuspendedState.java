@@ -6,8 +6,6 @@ package com.topguide.topguide.model.state;
 
 public class SuspendedState extends State {
 
-    private static final String SUSPENDED = "Suspended";
-
     @Override
     public boolean signUpCheck() {
         return tour.returnNegativeStatus();
@@ -15,6 +13,6 @@ public class SuspendedState extends State {
 
     @Override
     public String askedForStatus() {
-        return SUSPENDED;
+        return tour.returnStatusSuspended();
     }
 }

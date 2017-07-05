@@ -39,10 +39,16 @@ public class EditTourActivity extends AppCompatActivity {
         makeBinds();
         setTourName(currentTour);
 
+        checkStartDate(currentTour);
+
         setButtonLabels(currentTour);
         setListeners(currentTour);
 
 
+    }
+
+    private void checkStartDate(Tour currentTour) {
+        currentTour.getState().dateCheckRequested();
     }
 
     private void setButtonLabels(Tour currentTour) {

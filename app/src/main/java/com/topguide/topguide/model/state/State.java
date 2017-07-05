@@ -22,6 +22,9 @@ public abstract class State implements Serializable {
 
     public abstract boolean signUpCheck();
 
-
     public abstract String askedForStatus();
+
+    public void dateCheckRequested() {
+
+    }
 }

@@ -3,6 +3,7 @@ package com.topguide.topguide.model;
 import android.support.v7.view.menu.ActionMenuItem;
 
 import com.topguide.topguide.model.state.ActiveState;
+import com.topguide.topguide.model.state.FinishedState;
 import com.topguide.topguide.model.state.State;
 
 import java.io.Serializable;
@@ -16,6 +17,9 @@ import java.util.Date;
 
 public class Tour implements Serializable {
 
+    private static final String ACTIVE = "Active";
+    private static final String FINISHED = "Finished";
+    private static final String SUSPENDED = "Suspended";
     private String name;
     private Place placeName;
     private Date startDate;
@@ -174,6 +178,30 @@ public class Tour implements Serializable {
         return false;
     }
 
+    public String returnStatusAcitve() {
+        return ACTIVE;
+    }
+
+    public String returnStatusFinished() {
+        return FINISHED;
+    }
+
+    public String returnStatusSuspended() {
+        return SUSPENDED;
+    }
+
+    public boolean checkStartDate() {
+        if (startDate.after(new Date())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void changeState(State newState) {
+        state = newState;
+    }
+
     public static class Compare implements Comparator<Tour> {
 
         @Override
@@ -184,4 +212,6 @@ public class Tour implements Serializable {
             return 0;
         }
     }
+
+
 }

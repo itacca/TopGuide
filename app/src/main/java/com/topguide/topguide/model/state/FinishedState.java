@@ -6,8 +6,6 @@ package com.topguide.topguide.model.state;
 
 public class FinishedState extends State {
 
-    private static final String FINISHED = "Finished";
-
     @Override
     public boolean signUpCheck() {
         return tour.returnNegativeStatus();
@@ -15,6 +13,7 @@ public class FinishedState extends State {
 
     @Override
     public String askedForStatus() {
-        return FINISHED;
+        return tour.returnStatusFinished();
     }
+
 }

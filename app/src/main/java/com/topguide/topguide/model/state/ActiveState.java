@@ -6,8 +6,6 @@ package com.topguide.topguide.model.state;
 
 public class ActiveState extends State {
 
-    private static final String ACTIVE = "Active" ;
-
     @Override
     public boolean signUpCheck() {
         return tour.returnPositiveStatus();
@@ -15,6 +13,13 @@ public class ActiveState extends State {
 
     @Override
     public String askedForStatus() {
-        return ACTIVE;
+        return tour.returnStatusAcitve();
+    }
+
+    @Override
+    public void dateCheckRequested() {
+        if (!tour.checkStartDate()) {
+            tour.changeState(new FinishedState());
+        }
     }
 }

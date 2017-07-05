@@ -76,6 +76,8 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         signUpButton = (Button) findViewById(R.id.signupbutton);
 
+        checkStartDate();
+
         setUpButtonSettings();
 
         setUpStatus();
@@ -95,6 +97,10 @@ public class DetailedTourActivity extends AppCompatActivity {
                 setUpButtonSettings();
             }
         });
+    }
+
+    private void checkStartDate() {
+        currentTour.getState().dateCheckRequested();
     }
 
     private void setUpStatus() {
