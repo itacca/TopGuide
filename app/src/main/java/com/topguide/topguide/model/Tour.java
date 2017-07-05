@@ -158,6 +158,18 @@ public class Tour implements Serializable {
         this.state = state;
     }
 
+    public static String getACTIVE() {
+        return ACTIVE;
+    }
+
+    public static String getFINISHED() {
+        return FINISHED;
+    }
+
+    public static String getSUSPENDED() {
+        return SUSPENDED;
+    }
+
     public void calculateRate(int rate){
 
         this.rates.add(new Rate(rate));

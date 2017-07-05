@@ -140,5 +140,13 @@
         android:text="Change state"
         android:textAllCaps="false"/>
 
+    <TextView
+        android:id="@+id/edit_tour_state_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tour is finished so it cannot be changed"
+        android:textAlignment="center"
+        android:visibility="invisible"/>
+
 
 </LinearLayout>

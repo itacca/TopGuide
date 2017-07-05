@@ -22,4 +22,9 @@ public class ActiveState extends State {
             tour.changeState(new FinishedState());
         }
     }
+
+    @Override
+    public void stateChangeRequested() {
+        tour.changeState(new SuspendedState());
+    }
 }

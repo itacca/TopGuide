@@ -24,7 +24,7 @@ public abstract class State implements Serializable {
 
     public abstract String askedForStatus();
 
-    public void dateCheckRequested() {
+    public abstract void dateCheckRequested();
 
-    }
+    public abstract void stateChangeRequested();
 }

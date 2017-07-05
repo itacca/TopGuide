@@ -13,8 +13,11 @@ import com.topguide.topguide.model.Tour;
 
 public class EditTourActivity extends AppCompatActivity {
 
+    private static final String SUSPEND_TOUR = "Suspend tour";
+    private static final String ACTIVATE_TOUR = "Activate tour";
     private TopGuideApp app;
     private TextView tourName;
+    private TextView stateMessage;
     private Button placeName;
     private Button dateAndTime;
     private Button rating;
@@ -42,6 +45,7 @@ public class EditTourActivity extends AppCompatActivity {
         checkStartDate(currentTour);
 
         setButtonLabels(currentTour);
+        setChangeStateLabel(currentTour);
         setListeners(currentTour);
 
 
@@ -59,7 +63,18 @@ public class EditTourActivity extends AppCompatActivity {
         tourStatus.setText(currentTour.getState().askedForStatus());
     }
 
-    private void setListeners(Tour currentTour) {
+    private void setChangeStateLabel(Tour currentTour) {
+        if (currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())) {
+            changeState.setText(SUSPEND_TOUR);
+        } else if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())) {
+            changeState.setText(ACTIVATE_TOUR);
+        } else {
+            changeState.setVisibility(View.INVISIBLE);
+            stateMessage.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setListeners(final Tour currentTour) {
 
         placeName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +106,8 @@ public class EditTourActivity extends AppCompatActivity {
         changeState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                currentTour.getState().stateChangeRequested();
+                setChangeStateLabel(currentTour);
             }
         });
     }
@@ -102,6 +118,7 @@ public class EditTourActivity extends AppCompatActivity {
 
     private void makeBinds() {
         tourName = (TextView) findViewById(R.id.edit_tour_name);
+        stateMessage = (TextView) findViewById(R.id.edit_tour_state_message);
         placeName = (Button) findViewById(R.id.edit_place);
         dateAndTime = (Button) findViewById(R.id.edit_date);
         rating = (Button) findViewById(R.id.edit_rating);

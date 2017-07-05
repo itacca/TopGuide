@@ -15,4 +15,16 @@ public class SuspendedState extends State {
     public String askedForStatus() {
         return tour.returnStatusSuspended();
     }
+
+    @Override
+    public void dateCheckRequested() {
+        if (!tour.checkStartDate()) {
+            tour.changeState(new FinishedState());
+        }
+    }
+
+    @Override
+    public void stateChangeRequested() {
+        tour.changeState(new ActiveState());
+    }
 }

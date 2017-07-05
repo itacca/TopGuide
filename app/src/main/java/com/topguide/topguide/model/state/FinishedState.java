@@ -16,4 +16,14 @@ public class FinishedState extends State {
         return tour.returnStatusFinished();
     }
 
+    @Override
+    public void dateCheckRequested() {
+
+    }
+
+    @Override
+    public void stateChangeRequested() {
+
+    }
+
 }
