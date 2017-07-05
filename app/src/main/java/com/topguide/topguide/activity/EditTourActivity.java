@@ -1,10 +1,15 @@
 package com.topguide.topguide.activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.topguide.topguide.R;
@@ -76,9 +81,47 @@ public class EditTourActivity extends AppCompatActivity {
 
     private void setListeners(final Tour currentTour) {
 
+        final LayoutInflater inflater = this.getLayoutInflater();
+
+        final Context context = this;
+
         placeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final View dialogView = inflater.inflate(R.layout.dialog_change_data, null);
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+                dialogBuilder.setTitle("Change place");
+                dialogBuilder.setView(dialogView);
+
+                final TextView text1 = (TextView) dialogView.findViewById(R.id.text1_id);
+
+                text1.setText("\nEnter new place: ");
+
+                final EditText newPlace = (EditText) dialogView.findViewById(R.id.dialog_new_info);
+
+                newPlace.setHint(currentTour.getPlaceName().getName());
+
+                dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String input = newPlace.getText().toString();
+                        if (!input.isEmpty()) {
+                            currentTour.getPlaceName().setName(input);
+                            placeName.setText(input);
+                        }
+                    }
+                });
+
+                dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                AlertDialog dialog = dialogBuilder.create();
+
+                dialog.show();
 
             }
         });
@@ -86,13 +129,56 @@ public class EditTourActivity extends AppCompatActivity {
         dateAndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //TODO :: mozda da se stavi kalendar pa da se izabere datum -- ne mora
             }
         });
 
         tourPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final View dialogView = inflater.inflate(R.layout.dialog_change_data, null);
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+                dialogBuilder.setTitle("Change price");
+                dialogBuilder.setView(dialogView);
+
+                final TextView text1 = (TextView) dialogView.findViewById(R.id.text1_id);
+
+                text1.setText("\nEnter new price: ");
+
+                final EditText newPrice = (EditText) dialogView.findViewById(R.id.dialog_new_info);
+
+                newPrice.setHint(Double.toString(currentTour.getPrice().getPrice()));
+
+                dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String input = newPrice.getText().toString();
+                        double newPriceDouble = 0;
+                        if (!input.isEmpty()) {
+                            try {
+                                newPriceDouble = Double.parseDouble(input);
+                            } catch (Exception e) {
+                                newPriceDouble = 0;
+                            }
+
+                            if (newPriceDouble > 0) {
+                                currentTour.getPrice().setPrice(newPriceDouble);
+                                tourPrice.setText(Double.toString(newPriceDouble));
+                            }
+                        }
+                    }
+                });
+
+                dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                AlertDialog dialog = dialogBuilder.create();
+
+                dialog.show();
 
             }
         });
@@ -127,4 +213,10 @@ public class EditTourActivity extends AppCompatActivity {
         tourDescription = (Button) findViewById(R.id.edit_description);
         changeState = (Button) findViewById(R.id.edit_change_state);
     }
+
+
+    /**
+     *  TODO : treba zavrsiti dijaloge, treba uvezati turu u listu u dao ili je vratiit sa setResult, potrebno testirati
+     *
+     */
 }
