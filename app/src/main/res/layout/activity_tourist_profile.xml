@@ -101,30 +101,29 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false" />
 
+    <Button
+        android:id = "@+id/becomeguidebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_alignTop="@+id/emailbuttontourist"
+        android:text="Become a guide"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:background="#F30" />
 
     <Button
         android:id="@+id/toursbuttontourist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/emailbuttontourist"
-        android:layout_marginTop="90dp"
+        android:layout_alignTop="@+id/becomeguidebutton"
+        android:layout_marginTop="55dp"
         android:text="See your tours"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:background="#F30" />
 
-<!--
-    <Button
-        android:id = "@+id/becomeguidebutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_alignTop="@+id/toursbutton"
-        android:text="Become a guide"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:background="#F30"
-        />
--->
+
+
 </RelativeLayout>
 

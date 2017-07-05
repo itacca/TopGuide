@@ -31,6 +31,8 @@ public class DetailedTourActivity extends AppCompatActivity {
     Button signUpButton;
     boolean signed;
 
+    private static final int RATE_TOUR_CODE = 323;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +70,17 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourPrice.setText(String.format("%.2f", currentTour.getPrice().getPrice()) + " dinara");
 
         tourStatus = (TextView) findViewById(R.id.tourstatus);
-        tourStatus.setText("AKTIVNO!!!");
-        //stanje, razlicita boja, zavisi od stanja ,crvena za neaktivno, zuta za susp, zeleno za aktivno
+        if(currentTour.getState().askedForStatus().equals("Suspended"))
+
+            tourStatus.setText("Suspended");
+
+        else if(currentTour.getState().askedForStatus().equals("Active"))
+
+            tourStatus.setText("Active");
+
+        else
+
+            tourStatus.setText("Finished");
 
         tourDescription = (TextView) findViewById(R.id.tourdescription);
         tourDescription.setText(currentTour.getDescription());
@@ -85,15 +96,26 @@ public class DetailedTourActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(signed)
+                if (currentTour.getState().askedForStatus().equals("Suspended")){
 
-                    app.getPersonDao().getCurrentTourist().signOutOfTour(currentTour);
+                    if (signed){
 
-                else
+                        Intent next = new Intent(DetailedTourActivity.this, RateTourActivity.class);
+                        next.putExtra("finishedtour", currentTour);
+                        startActivityForResult(next, RATE_TOUR_CODE);
+                    }
+                }
 
-                    app.getPersonDao().getCurrentTourist().signUpForTour(currentTour);
+                else {
+                    if (signed)
 
+                        app.getPersonDao().getCurrentTourist().signOutOfTour(currentTour);
 
+                    else
+
+                        app.getPersonDao().getCurrentTourist().signUpForTour(currentTour);
+
+                }
                 setUpButtonSettings();
             }
         });
@@ -108,18 +130,39 @@ public class DetailedTourActivity extends AppCompatActivity {
     }
 
     private void setUpButtonSettings() {
-        signUpButton.setText("Sign up for tour");
 
+        signUpButton.setClickable(false);
         signed = false;
 
-        signed = app.getPersonDao().getCurrentTourist().checkAttendenceOnTour(currentTour);
+        if (currentTour.getState().askedForStatus().equals("Suspended")){
 
-        if (signed) {
-            signUpButton.setText("Sign out of tour");
+            signUpButton.setText("Tour finished");
+
+            for(Tour t : app.getPersonDao().getCurrentTourist().getTours()){
+
+                if(currentTour.getName().equals(t.getName())){
+
+                    signUpButton.setText("Submit rate(s)/comment");
+                    signUpButton.setClickable(true);
+                    signed = true;
+                    break;
+                }
+            }
         }
+        else{
+            signUpButton.setText("Sign up for tour");
 
-        if (!performSignUpCheck()) {
-            signUpButton.setClickable(false);
+            signed = false;
+
+            signed = app.getPersonDao().getCurrentTourist().checkAttendenceOnTour(currentTour);
+
+            if (signed) {
+                signUpButton.setText("Sign out of tour");
+            }
+
+            if (!performSignUpCheck()) {
+                signUpButton.setClickable(false);
+            }
         }
 
     }

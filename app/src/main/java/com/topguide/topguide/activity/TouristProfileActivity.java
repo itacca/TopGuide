@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
+import com.topguide.topguide.model.Guide;
 import com.topguide.topguide.model.Tourist;
 import com.topguide.topguide.model.User;
 
@@ -31,6 +32,8 @@ public class TouristProfileActivity extends AppCompatActivity {
     private TopGuideApp app;
 
     private static final int TOURIST_TOURS_CODE = 77;
+    private static final int PROFILE_GUIDE_CODE = 94;
+    private static final int GUIDE_ACTIVITY_CODE = 49;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class TouristProfileActivity extends AppCompatActivity {
         firstNameButton = (Button) findViewById(R.id.namebuttontourist);
         lastNameButton = (Button) findViewById(R.id.lastnamebuttontourist);
         emailButton = (Button) findViewById(R.id.emailbuttontourist);
-
+        becomeGuideButton = (Button) findViewById(R.id.becomeguidebutton);
         toursButton = (Button) findViewById(R.id.toursbuttontourist);
 
         usernameButton.setText(currentTourist.getUser().getUsername());
@@ -63,6 +66,10 @@ public class TouristProfileActivity extends AppCompatActivity {
         firstNameButton.setText(currentTourist.getName());
         lastNameButton.setText(currentTourist.getLastname());
         emailButton.setText(currentTourist.getEmail());
+
+        if(currentTourist.getUser().getRole() == User.Role.GUIDE)
+
+            becomeGuideButton.setText("Back to guide profile");
     }
 
     public void setUpListeners(final Tourist currentTourist){
@@ -292,11 +299,36 @@ public class TouristProfileActivity extends AppCompatActivity {
             }
         });
 
-/*        becomeGuideButton.setOnClickListener(new View.OnClickListener() {
+        becomeGuideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if(currentTourist.getUser().getRole() == User.Role.TOURIST){
+
+                    Intent intent = new Intent(TouristProfileActivity.this, GuideProfileActivity.class);
+                    startActivityForResult(intent, PROFILE_GUIDE_CODE);
+                }
+
+                else{
+
+                    Tourist temp = currentTourist;
+                    temp.getUser().setRole(User.Role.GUIDE);
+                    for(Tourist t : app.getPersonDao().getTourists()){
+
+                        if(t.getUser().getUsername() == temp.getUser().getUsername()){
+
+                            Guide newGuide = new Guide(temp);
+                            app.getPersonDao().getTourists().remove(t);
+                            app.getPersonDao().getTourists().add(newGuide);
+                            app.getPersonDao().setCurrentGuide(newGuide);
+                            break;
+                        }
+                    }
+
+                    Intent intent = new Intent(TouristProfileActivity.this, GuideActivity.class);
+                    startActivityForResult(intent, GUIDE_ACTIVITY_CODE);
+                }
             }
-        });*/
+        });
     }
 }
