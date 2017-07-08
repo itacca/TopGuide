@@ -72,7 +72,6 @@ public class GuideProfileActivity extends AppCompatActivity {
     }
 
     private void setUpListeners(final Guide currentGuide){
-        final Context context = this;
         final LayoutInflater inflater = this.getLayoutInflater();
 
         usernameButton.setOnClickListener(new View.OnClickListener() {

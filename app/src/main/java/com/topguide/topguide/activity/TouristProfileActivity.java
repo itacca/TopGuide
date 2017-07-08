@@ -303,7 +303,7 @@ public class TouristProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(currentTourist.getUser().getRole() == User.Role.TOURIST){
+                if(currentTourist.getUser().getRole() == User.Role.GUIDE){
 
                     Intent intent = new Intent(TouristProfileActivity.this, GuideProfileActivity.class);
                     startActivityForResult(intent, PROFILE_GUIDE_CODE);
