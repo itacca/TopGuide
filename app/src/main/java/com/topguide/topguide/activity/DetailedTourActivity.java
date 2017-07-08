@@ -43,7 +43,6 @@ public class DetailedTourActivity extends AppCompatActivity {
 
     public void init() {
 
-
         app = (TopGuideApp) getApplication();
         currentTour = (Tour) this.getIntent().getExtras().getSerializable("tour");
 
@@ -92,7 +91,7 @@ public class DetailedTourActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (currentTour.getState().askedForStatus().equals("Suspended")){
+                if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())){
 
                     if (signed){
 
@@ -130,7 +129,7 @@ public class DetailedTourActivity extends AppCompatActivity {
         signUpButton.setClickable(false);
         signed = false;
 
-        if (currentTour.getState().askedForStatus().equals("Suspended")){
+        if (currentTour.getState().askedForStatus().equals(currentTour.getFINISHED())){
 
             signUpButton.setText("Tour finished");
 
@@ -144,6 +143,10 @@ public class DetailedTourActivity extends AppCompatActivity {
                     break;
                 }
             }
+        }
+        else if(currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())){
+
+            signUpButton.setText("Tour suspended, signup disabled!");
         }
         else{
             signUpButton.setText("Sign up for tour");

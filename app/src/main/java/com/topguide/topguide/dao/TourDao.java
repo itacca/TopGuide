@@ -2,6 +2,8 @@ package com.topguide.topguide.dao;
 import com.topguide.topguide.model.Tour;
 import com.topguide.topguide.model.Tourist;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,6 +24,16 @@ public class TourDao {
         tours.add(new Tour("All-round obilazak","Beograd", new Date()));
         tours.add(new Tour("Obilazak znamenitosti","Beograd",new Date()));
         tours.add(new Tour("Brza tura po gradu","Nis",new Date()));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d  = new Date();
+        try {
+             d = sdf.parse("21/12/2019");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        tours.add(new Tour("Obilazak parkova","Nis",d));
     }
 
     public ArrayList<Tour> getTours() {
