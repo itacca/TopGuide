@@ -14,9 +14,10 @@ import com.topguide.topguide.model.Tour;
 import java.util.ArrayList;
 
 public class TouristToursActivity extends AppCompatActivity {
+    private ListView listView;
+    private ArrayList<Tour> tours;
+    private TourDao tourDao;
 
-    ListView listView;
-    ArrayList<Tour> tours;
     private TopGuideApp app;
 
     @Override
@@ -24,17 +25,10 @@ public class TouristToursActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourist_tours);
 
-        app = (TopGuideApp) getApplication();
-
         init();
     }
 
     public void init() {
 
-        tours = app.getTourDao().getTours();
-
-        listView = (ListView) findViewById(R.id.touristtourslist);
-        TourAdapter adapter = new TourAdapter(this, tours);
-        listView.setAdapter(adapter);
     }
 }

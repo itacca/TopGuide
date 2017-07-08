@@ -14,6 +14,7 @@ import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.adapter.TourAdapter;
 import com.topguide.topguide.dao.TourDao;
+import com.topguide.topguide.model.Guide;
 import com.topguide.topguide.model.Tour;
 
 import java.util.ArrayList;
@@ -32,14 +33,14 @@ public class GuideToursActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_guide_tours);
 
         app = (TopGuideApp) getApplication();
-
-        init();
+        Guide currentGuide = (Guide)getIntent().getSerializableExtra("guide");
+        init(currentGuide);
     }
 
-    public void init() {
-        tourDao = new TourDao();
-        tours = new ArrayList<Tour>();
-        tours = tourDao.getTours();
+    public void init(Guide currentGuide) {
+        tourDao = app.getTourDao();
+
+        ArrayList<Tour> tours = tourDao.getGuideTours(currentGuide.getUser().getUsername());
 
         listView = (ListView) findViewById(R.id.guidetourslist);
         TourAdapter adapter = new TourAdapter(this, tours);

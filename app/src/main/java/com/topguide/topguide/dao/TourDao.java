@@ -44,4 +44,16 @@ public class TourDao {
 
         return searchedTours;
     }
+
+    public ArrayList<Tour> getGuideTours(String username){
+
+        ArrayList<Tour> guideTours = new ArrayList<>();
+
+        for (Tour t: tours){
+            if (t.getGuide().getUser().getUsername().equals(username)){
+                guideTours.add(t);
+            }
+        }
+        return guideTours;
+    }
 }

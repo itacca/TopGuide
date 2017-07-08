@@ -62,7 +62,7 @@ public class GuideProfileActivity extends AppCompatActivity {
         switchButton = (Button) findViewById(R.id.switchprfilebuttonguide);
         toursButton = (Button) findViewById(R.id.seetoursbuttonguide);
 
-        Guide guide = app.getPersonDao().getCurrentGuide();
+        //Guide guide = app.getPersonDao().getCurrentGuide();
 
         usernameButton.setText(currentGuide.getUser().getUsername());
         passwordButton.setText(currentGuide.getUser().getPassword());
@@ -291,7 +291,8 @@ public class GuideProfileActivity extends AppCompatActivity {
         toursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GuideToursActivity.class);
+                Intent intent = new Intent(GuideProfileActivity.this, GuideToursActivity.class);
+                intent.putExtra("guide", currentGuide);
                 startActivityForResult(intent, GUIDE_TOURS_CODE);
             }
         });

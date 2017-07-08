@@ -66,7 +66,7 @@ public class GuideActivity extends AppCompatActivity {
         profileButton = (Button) findViewById(R.id.profilebutton_guide);
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(context, GuideProfileActivity.class);
+                Intent intent = new Intent(GuideActivity.this, GuideProfileActivity.class);
                 startActivityForResult(intent, CODE_GUIDE_PROFILE);
             }
         });
