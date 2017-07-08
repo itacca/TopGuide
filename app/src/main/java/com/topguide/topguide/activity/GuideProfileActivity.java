@@ -60,7 +60,7 @@ public class GuideProfileActivity extends AppCompatActivity {
         lastNameButton = (Button) findViewById(R.id.lastnamebuttonguide);
         emailButton = (Button) findViewById(R.id.emailbuttonguide);
         switchButton = (Button) findViewById(R.id.switchprfilebuttonguide);
-        toursButton = (Button) findViewById(R.id.toursbuttonguide);
+        toursButton = (Button) findViewById(R.id.seetoursbuttonguide);
 
         Guide guide = app.getPersonDao().getCurrentGuide();
 
