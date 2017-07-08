@@ -1,10 +1,21 @@
 package com.topguide.topguide.model.state;
 
+import com.topguide.topguide.model.Tour;
+
 /**
  * Created by Igor on 7/4/2017.
  */
 
 public class SuspendedState extends State {
+
+
+    public SuspendedState() {
+        super();
+    }
+
+    public SuspendedState(Tour t) {
+        super(t);
+    }
 
     @Override
     public boolean signUpCheck() {
@@ -19,12 +30,12 @@ public class SuspendedState extends State {
     @Override
     public void dateCheckRequested() {
         if (!tour.checkStartDate()) {
-            tour.changeState(new FinishedState());
+            tour.changeState(new FinishedState(tour));
         }
     }
 
     @Override
     public void stateChangeRequested() {
-        tour.changeState(new ActiveState());
+        tour.changeState(new SuspendedState(tour));
     }
 }

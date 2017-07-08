@@ -30,6 +30,7 @@ public class TouristProfileActivity extends AppCompatActivity {
     private Button becomeGuideButton;
 
     private TopGuideApp app;
+    private Context context;
 
     private static final int TOURIST_TOURS_CODE = 77;
     private static final int PROFILE_GUIDE_CODE = 94;
@@ -40,6 +41,7 @@ public class TouristProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourist_profile);
 
+        context = this;
         init();
     }
 
@@ -73,7 +75,7 @@ public class TouristProfileActivity extends AppCompatActivity {
     }
 
     public void setUpListeners(final Tourist currentTourist){
-        final Context context = this;
+
         final LayoutInflater inflater = this.getLayoutInflater();
 
         usernameButton.setOnClickListener(new View.OnClickListener() {
@@ -294,7 +296,7 @@ public class TouristProfileActivity extends AppCompatActivity {
         toursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TouristProfileActivity.this, TouristToursActivity.class);
+                Intent intent = new Intent(context, TouristToursActivity.class);
                 startActivityForResult(intent, TOURIST_TOURS_CODE);
             }
         });
@@ -305,7 +307,7 @@ public class TouristProfileActivity extends AppCompatActivity {
 
                 if(currentTourist.getUser().getRole() == User.Role.GUIDE){
 
-                    Intent intent = new Intent(TouristProfileActivity.this, GuideProfileActivity.class);
+                    Intent intent = new Intent(context, GuideProfileActivity.class);
                     startActivityForResult(intent, PROFILE_GUIDE_CODE);
                 }
 
