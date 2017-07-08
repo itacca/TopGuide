@@ -47,7 +47,7 @@ public class Tour implements Serializable {
         this.rates = new ArrayList<>();
         this.rates.add(new Rate(5.0));
         this.comments = new ArrayList<>();
-        this.state = new ActiveState();
+        this.state = new ActiveState(this);
     }
 
     public Tour(String name, String placeName, Date startDate, int rate) {

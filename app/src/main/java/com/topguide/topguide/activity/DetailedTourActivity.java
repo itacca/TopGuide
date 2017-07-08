@@ -70,18 +70,14 @@ public class DetailedTourActivity extends AppCompatActivity {
         tourPrice.setText(String.format("%.2f", currentTour.getPrice().getPrice()) + " dinara");
 
         tourStatus = (TextView) findViewById(R.id.tourstatus);
-        if(currentTour.getState().askedForStatus().equals("Suspended"))
 
-            tourStatus.setText("Suspended");
-
-        else if(currentTour.getState().askedForStatus().equals("Active"))
-
+        if (currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())) {
             tourStatus.setText("Active");
-
-        else
-
+        } else if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())) {
+            tourStatus.setText("Suspended");
+        } else {
             tourStatus.setText("Finished");
-
+        }
         tourDescription = (TextView) findViewById(R.id.tourdescription);
         tourDescription.setText(currentTour.getDescription());
 

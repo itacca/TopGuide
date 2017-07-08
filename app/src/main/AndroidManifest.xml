@@ -26,7 +26,8 @@
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.TouristProfileActivity" />
         <activity android:name=".activity.EditTourActivity" />
-        <activity android:name=".activity.RateTourActivity"></activity>
+        <activity android:name=".activity.RateTourActivity"/>
+        <activity android:name=".activity.GuideProfileActivity"/>
     </application>
 
 </manifest>
