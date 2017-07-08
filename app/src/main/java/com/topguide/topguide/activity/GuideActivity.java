@@ -36,9 +36,10 @@ public class GuideActivity extends AppCompatActivity {
     TopGuideApp app;
     boolean error;
 
-    int DETAILED_TOUR_CODE = 18;
-    int CREATE_TOUR_CODE = 442;
-    private static final int GUIDE_PROFILE_CODE = 342;
+    private static final int DETAILED_TOUR_CODE = 18;
+    private static final int EDIT_TOUR_CODE = 118;
+    private static final int CREATE_TOUR_CODE = 442;
+    private static final int CODE_GUIDE_PROFILE = 566;
 
     private Context context;
 
@@ -66,7 +67,7 @@ public class GuideActivity extends AppCompatActivity {
         profileButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(context, GuideProfileActivity.class);
-                startActivityForResult(intent, GUIDE_PROFILE_CODE);
+                startActivityForResult(intent, CODE_GUIDE_PROFILE);
             }
         });
 
@@ -114,15 +115,17 @@ public class GuideActivity extends AppCompatActivity {
 
                 currentTour = app.getTourDao().getTours().get(i);
 
-                //if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
-                    //intent za svoju turu vodica
-                //}
-                //else{
+                if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
+                    Intent next = new Intent(context, EditTourActivity.class);
+                    next.putExtra("tour", currentTour);
+                    startActivityForResult(next, EDIT_TOUR_CODE);
+                }
+                else{
 
-                Intent next = new Intent(GuideActivity.this, DetailedTourActivity.class);
-                next.putExtra("tour", currentTour);
-                startActivityForResult(next, DETAILED_TOUR_CODE);
-                //}
+                    Intent next = new Intent(context, DetailedTourActivity.class);
+                    next.putExtra("tour", currentTour);
+                    startActivityForResult(next, DETAILED_TOUR_CODE);
+                }
             }
         });
     }

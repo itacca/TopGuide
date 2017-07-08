@@ -26,13 +26,14 @@ public class GuideProfileActivity extends AppCompatActivity {
     private Button firstNameButton;
     private Button lastNameButton;
     private Button emailButton;
-
+    private Button switchButton;
     private Button toursButton;
 
     private TopGuideApp app;
     private Context context;
 
     private static final int GUIDE_TOURS_CODE = 12;
+    private static final int TOURIST_PROFILE_CODE = 444;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class GuideProfileActivity extends AppCompatActivity {
         firstNameButton = (Button) findViewById(R.id.namebuttonguide);
         lastNameButton = (Button) findViewById(R.id.lastnamebuttonguide);
         emailButton = (Button) findViewById(R.id.emailbuttonguide);
-
+        switchButton = (Button) findViewById(R.id.switchprfilebuttonguide);
         toursButton = (Button) findViewById(R.id.toursbuttonguide);
 
         Guide guide = app.getPersonDao().getCurrentGuide();
@@ -71,7 +72,6 @@ public class GuideProfileActivity extends AppCompatActivity {
     }
 
     private void setUpListeners(final Guide currentGuide){
-        final Context context = this;
         final LayoutInflater inflater = this.getLayoutInflater();
 
         usernameButton.setOnClickListener(new View.OnClickListener() {
@@ -288,12 +288,20 @@ public class GuideProfileActivity extends AppCompatActivity {
             }
         });
 
-
         toursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GuideToursActivity.class);
                 startActivityForResult(intent, GUIDE_TOURS_CODE);
+            }
+        });
+
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, TouristProfileActivity.class);
+                startActivityForResult(intent, TOURIST_PROFILE_CODE);
             }
         });
     }

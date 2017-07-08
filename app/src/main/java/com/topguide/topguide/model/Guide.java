@@ -29,6 +29,24 @@ public class Guide extends Tourist implements Serializable{
         this.rates = new ArrayList<>();
     }
 
+    public Guide(Tourist tourist) {
+        super(tourist.getName(), tourist.getLastname(), tourist.getEmail(), tourist.getUser(), new ArrayList<Tour>());
+        this.rate = new Rate();
+        this.rates = new ArrayList<>();
+    }
+
+    public void calculateRate(Rate rate){
+
+        this.rates.add(rate);
+
+        double sum = 0;
+
+        for (Rate i : this.rates)
+            sum = sum + i.getRate();
+
+        this.rate = new Rate (sum / this.rates.size());
+    }
+
     public Rate getRate() {
         return rate;
     }

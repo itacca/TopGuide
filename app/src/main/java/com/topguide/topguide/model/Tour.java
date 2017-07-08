@@ -170,9 +170,9 @@ public class Tour implements Serializable {
         return SUSPENDED;
     }
 
-    public void calculateRate(int rate){
+    public void calculateRate(Rate rate){
 
-        this.rates.add(new Rate(rate));
+        this.rates.add(rate);
 
         double sum = 0;
 
