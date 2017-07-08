@@ -85,16 +85,9 @@ public class TouristActivity extends AppCompatActivity {
 
                 currentTour = app.getTourDao().getTours().get(i);
 
-                if(currentTour.getState().askedForStatus().equals("Finished")){
-
-                    //PRIKAZ ZAVRSENE TURE
-
-                }
-                else {
-                    Intent next = new Intent(TouristActivity.this, DetailedTourActivity.class);
-                    next.putExtra("tour", currentTour);
-                    startActivityForResult(next, DETAILED_TOUR_CODE);
-                }
+                Intent next = new Intent(TouristActivity.this, DetailedTourActivity.class);
+                next.putExtra("tour", currentTour);
+                startActivityForResult(next, DETAILED_TOUR_CODE);
             }
         });
     }
