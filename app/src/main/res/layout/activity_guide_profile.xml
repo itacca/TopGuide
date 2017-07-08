@@ -94,23 +94,34 @@
         android:textSize="15sp"/>
 
     <Button
-        android:layout_alignTop="@id/text_view_guide4"
-        android:layout_marginTop="20dp"
         android:id="@+id/emailbuttonguide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:layout_below="@+id/text_view_guide4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
+    <Button
+        android:id="@+id/switchprfilebuttonguide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/emailbuttonguide"
+        android:layout_marginTop="50dp"
+        android:text="Switch to tourist profile"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:background="#F30" />
 
     <Button
         android:id="@+id/toursbuttonguide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/emailbuttonguide"
-        android:layout_marginTop="120dp"
+        android:layout_alignTop="@+id/switchprfilebuttonguide"
+        android:layout_marginTop="55dp"
         android:text="See your tours"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#ffffff"
         android:background="#F30" />
 
 </RelativeLayout>

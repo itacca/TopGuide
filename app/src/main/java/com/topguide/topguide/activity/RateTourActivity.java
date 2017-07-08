@@ -71,40 +71,40 @@ public class RateTourActivity extends AppCompatActivity {
             }
         });
 
-        rateGuide.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+    rateGuide.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                guideRate = progress;
-            }
+            guideRate = progress;
+        }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+        }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
+        }
+    });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    submit.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-                currentTour.calculateRate(new Rate(tourRate));
-                currentTour.getGuide().calculateRate(new Rate(guideRate));
+            currentTour.calculateRate(new Rate(tourRate));
+            currentTour.getGuide().calculateRate(new Rate(guideRate));
 
-                if(commentTour.getText().toString().trim().length() != 0)
+            if(commentTour.getText().toString().trim().length() != 0)
 
-                    currentTour.getComments().add(new Comment(commentTour.toString()));
+                currentTour.getComments().add(new Comment(commentTour.toString()));
 
-                Intent next = new Intent(RateTourActivity.this, DetailedTourActivity.class);
-                next.putExtra("tour", currentTour);
-                startActivityForResult(next, SHOW_TOUR_CODE);
-            }
-        });
+            Intent next = new Intent(RateTourActivity.this, DetailedTourActivity.class);
+            next.putExtra("tour", currentTour);
+            startActivityForResult(next, SHOW_TOUR_CODE);
+        }
+    });
 
     }
 }

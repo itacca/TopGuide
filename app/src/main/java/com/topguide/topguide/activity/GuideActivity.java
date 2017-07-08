@@ -115,17 +115,17 @@ public class GuideActivity extends AppCompatActivity {
 
                 currentTour = app.getTourDao().getTours().get(i);
 
-                if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
-                    Intent next = new Intent(context, EditTourActivity.class);
-                    next.putExtra("tour", currentTour);
-                    startActivityForResult(next, EDIT_TOUR_CODE);
-                }
-                else{
+            if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
+                Intent next = new Intent(context, EditTourActivity.class);
+                next.putExtra("tour", currentTour);
+                startActivityForResult(next, EDIT_TOUR_CODE);
+            }
+            else{
 
-                    Intent next = new Intent(context, DetailedTourActivity.class);
-                    next.putExtra("tour", currentTour);
-                    startActivityForResult(next, DETAILED_TOUR_CODE);
-                }
+                Intent next = new Intent(context, DetailedTourActivity.class);
+                next.putExtra("tour", currentTour);
+                startActivityForResult(next, DETAILED_TOUR_CODE);
+            }
             }
         });
     }
