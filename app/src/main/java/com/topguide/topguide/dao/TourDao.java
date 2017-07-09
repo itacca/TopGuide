@@ -1,4 +1,6 @@
 package com.topguide.topguide.dao;
+import com.topguide.topguide.model.Guide;
+import com.topguide.topguide.model.Pricelist;
 import com.topguide.topguide.model.Tour;
 import com.topguide.topguide.model.Tourist;
 
@@ -67,5 +69,12 @@ public class TourDao {
             }
         }
         return guideTours;
+    }
+
+    public Tour createTour(String name, String placeName, Date startDate, Pricelist price, String description, Guide guide){
+
+        Tour newTour = new Tour(name, placeName, startDate, price, description, guide);
+        tours.add(newTour);
+        return newTour;
     }
 }

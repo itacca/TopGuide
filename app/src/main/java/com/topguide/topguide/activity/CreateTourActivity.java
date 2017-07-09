@@ -71,11 +71,10 @@ public class CreateTourActivity extends AppCompatActivity {
                             statusText.setText("Error: Date and time error detected, wrong input! \nPlease insert correct date and time of tour!");
 
                         else {
-                            Tour newTour = new Tour(tourNameText.getText().toString(), placeNameText.getText().toString(),
+                            Tour newTour = app.getTourDao().createTour(tourNameText.getText().toString(), placeNameText.getText().toString(),
                                     inputDate, new Pricelist(Double.parseDouble(priceText.getText().toString()), inputDate),
                                     descriptionText.getText().toString(), app.getPersonDao().getCurrentGuide());
 
-                            app.getTourDao().getTours().add(newTour);
                             app.getPersonDao().getCurrentGuide().getTours().add(newTour);
 
                             Intent next = new Intent(CreateTourActivity.this, GuideActivity.class);
