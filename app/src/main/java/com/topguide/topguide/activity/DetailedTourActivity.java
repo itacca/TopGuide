@@ -17,19 +17,19 @@ import java.text.SimpleDateFormat;
 
 public class DetailedTourActivity extends AppCompatActivity {
 
-    Tour currentTour;
-    TopGuideApp app;
-    TextView tourName;
-    TextView placeName;
-    TextView dateAndTime;
-    TextView tourRate;
-    TextView guideName;
-    TextView guideRate;
-    TextView tourPrice;
-    TextView tourStatus;
-    TextView tourDescription;
-    Button signUpButton;
-    boolean signed;
+    private Tour currentTour;
+    private TopGuideApp app;
+    private TextView tourName;
+    private TextView placeName;
+    private TextView dateAndTime;
+    private TextView tourRate;
+    private TextView guideName;
+    private TextView guideRate;
+    private TextView tourPrice;
+    private TextView tourStatus;
+    private TextView tourDescription;
+    private Button signUpButton;
+    private boolean signed;
 
     private static final int RATE_TOUR_CODE = 323;
 

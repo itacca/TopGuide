@@ -27,14 +27,14 @@ import java.util.ArrayList;
 
 public class GuideActivity extends AppCompatActivity {
 
-    EditText tourText;
-    Button profileButton;
-    Button tourButton;
-    Button newTourButton;
-    ListView listView;
-    Tour currentTour;
-    TopGuideApp app;
-    boolean error;
+    private EditText tourText;
+    private Button profileButton;
+    private Button tourButton;
+    private Button newTourButton;
+    private ListView listView;
+    private Tour currentTour;
+    private TopGuideApp app;
+    private boolean error;
 
     private static final int DETAILED_TOUR_CODE = 18;
     private static final int EDIT_TOUR_CODE = 118;

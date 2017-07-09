@@ -16,9 +16,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
     private static final int LOGIN_START_CODE = 10;
     private static final int REGISTER_START_CODE = 28;
-    Button loginBtn;
-    Button registerBtn;
-    Button guestBtn;
+    private Button loginBtn;
+    private Button registerBtn;
+    private Button guestBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

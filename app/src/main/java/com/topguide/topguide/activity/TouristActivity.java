@@ -27,17 +27,16 @@ import java.util.ArrayList;
 
 public class TouristActivity extends AppCompatActivity {
 
-    EditText tourText;
-    Button profileButton;
-    Button tourButton;
-    ListView listView;
-    Tour currentTour;
-    TopGuideApp app;
+    private EditText tourText;
+    private Button profileButton;
+    private Button tourButton;
+    private ListView listView;
+    private Tour currentTour;
+
+    private TopGuideApp app;
 
     private static final int DETAILED_TOUR_CODE = 24;
     private static final int TOURIST_PROFILE_CODE = 77;
-
-    private Context context;
 
 
     @Override
@@ -50,8 +49,6 @@ public class TouristActivity extends AppCompatActivity {
 
     private void init() {
         app = (TopGuideApp) getApplication();
-
-        context = this;
 
         listView = (ListView) findViewById(R.id.tourslist);
         TourAdapter adapter = new TourAdapter(this, app.getTourDao().getTours());

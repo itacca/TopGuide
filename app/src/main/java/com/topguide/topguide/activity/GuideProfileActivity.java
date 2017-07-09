@@ -62,8 +62,6 @@ public class GuideProfileActivity extends AppCompatActivity {
         switchButton = (Button) findViewById(R.id.switchprfilebuttonguide);
         toursButton = (Button) findViewById(R.id.seetoursbuttonguide);
 
-        //Guide guide = app.getPersonDao().getCurrentGuide();
-
         usernameButton.setText(currentGuide.getUser().getUsername());
         passwordButton.setText(currentGuide.getUser().getPassword());
         firstNameButton.setText(currentGuide.getName());

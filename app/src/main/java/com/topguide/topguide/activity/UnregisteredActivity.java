@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.topguide.topguide.R;
+import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.adapter.TourAdapter;
 import com.topguide.topguide.dao.TourDao;
 import com.topguide.topguide.model.Tour;
@@ -17,24 +18,24 @@ import com.topguide.topguide.model.Tour;
 import java.util.ArrayList;
 
 public class UnregisteredActivity extends AppCompatActivity {
-    EditText tourText;
-    Button tourButton;
-    ListView listView;
-    ArrayList<Tour> tours;
-    TourDao tourDao;
+    private EditText tourText;
+    private Button tourButton;
+    private ListView listView;
+
+    private TopGuideApp app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unregistered);
 
+        app = (TopGuideApp) getApplication();
+
         init();
     }
 
     public void init(){
-        tourDao = new TourDao();
-        tours = new ArrayList<Tour>();
-        tours = tourDao.getTours();
+        ArrayList<Tour> tours = app.getTourDao().getTours();
 
         listView = (ListView) findViewById(R.id.tourslist);
         TourAdapter adapter = new TourAdapter(this, tours);
@@ -53,7 +54,7 @@ public class UnregisteredActivity extends AppCompatActivity {
         tourButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String word = tourText.getText().toString();
-                ArrayList<Tour> searchedTours = tourDao.searchTours(word);
+                ArrayList<Tour> searchedTours = app.getTourDao().searchTours(word);
                 TourAdapter adapter = new TourAdapter(getBaseContext(), searchedTours);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

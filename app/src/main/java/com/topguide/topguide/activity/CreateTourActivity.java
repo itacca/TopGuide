@@ -20,15 +20,15 @@ import java.util.Date;
 
 public class CreateTourActivity extends AppCompatActivity {
 
-    EditText tourNameText;
-    EditText placeNameText;
-    EditText dateText;
-    EditText priceText;
-    EditText descriptionText;
-    TextView statusText;
-    Button createTourButton;
-    TopGuideApp app;
-    int MAIN_CODE = 232;
+    private EditText tourNameText;
+    private EditText placeNameText;
+    private EditText dateText;
+    private EditText priceText;
+    private EditText descriptionText;
+    private TextView statusText;
+    private Button createTourButton;
+    private TopGuideApp app;
+    private int MAIN_CODE = 232;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

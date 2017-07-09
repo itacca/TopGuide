@@ -22,9 +22,6 @@ import java.util.ArrayList;
 public class GuideToursActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private static final int EDIT_TOURS_CODE = 99;
-    ListView listView;
-    ArrayList<Tour> tours;
-    TourDao tourDao;
     private TopGuideApp app;
 
     @Override
@@ -38,11 +35,11 @@ public class GuideToursActivity extends AppCompatActivity implements AdapterView
     }
 
     public void init(Guide currentGuide) {
-        tourDao = app.getTourDao();
+        TourDao tourDao = app.getTourDao();
 
         ArrayList<Tour> tours = tourDao.getGuideTours(currentGuide.getUser().getUsername());
 
-        listView = (ListView) findViewById(R.id.guidetourslist);
+        ListView listView = (ListView) findViewById(R.id.guidetourslist);
         TourAdapter adapter = new TourAdapter(this, tours);
         listView.setAdapter(adapter);
 

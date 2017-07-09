@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class TouristToursActivity extends AppCompatActivity {
     private ListView listView;
-    private ArrayList<Tour> tours;
-    private TourDao tourDao;
 
     private TopGuideApp app;
 
@@ -29,6 +27,10 @@ public class TouristToursActivity extends AppCompatActivity {
     }
 
     public void init() {
+        ArrayList<Tour> tours = app.getPersonDao().getCurrentTourist().getTours();
 
+        listView = (ListView) findViewById(R.id.touristtourslist);
+        TourAdapter adapter = new TourAdapter(this, tours);
+        listView.setAdapter(adapter);
     }
 }
