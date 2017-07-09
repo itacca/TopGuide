@@ -26,6 +26,14 @@ public class TourDaoTest {
     public static void setUpClass(){
         tourDao = new TourDao();
         tours = tourDao.getTours();
+
+        for (Tour t: tours){
+            if (t.getPlaceName().getName().contains("ad")){
+                t.setGuide(new Guide("Ana", "BanicVodic", "anab@gmail.com", new User("bana", "12345", 1)));
+            } else{
+                t.setGuide(new Guide("Ana", "CanicVodic", "anab@gmail.com", new User("cana", "12345", 1)));
+            }
+        }
     }
 
     @Test
@@ -46,17 +54,23 @@ public class TourDaoTest {
     }
 
     @Test
-    public void getGuideTours(){
+    public void searchToursTestFalse(){
 
-        for (Tour t: tours){
-            if (t.getPlaceName().getName().contains("ad")){
-                t.setGuide(new Guide("Ana", "BanicVodic", "anab@gmail.com", new User("bana", "12345", 1)));
-            } else{
-                t.setGuide(new Guide("Ana", "CanicVodic", "anab@gmail.com", new User("cana", "12345", 1)));
-            }
-        }
+        ArrayList<Tour> testTours = new ArrayList<>();
 
-        ArrayList<Tour> testTours = new ArrayList<Tour>();
+        testTours.add(new Tour("All-round obilazak","Beograd", tours.get(2).getStartDate()));
+        testTours.add(new Tour("Obilazak znamenitosti","Beograd",tours.get(3).getStartDate()));
+
+        ArrayList<Tour> retTours = tourDao.searchTours("ad");
+
+
+        assertFalse(testTours.equals(retTours));
+    }
+
+    @Test
+    public void getGuideToursTestTrue(){
+
+        ArrayList<Tour> testTours = new ArrayList<>();
 
         testTours.add(new Tour("Obilazak restorana","Novi Sad", new Date()));
         testTours.add(new Tour("Obilazak muzeja","Novi Sad", new Date()));
@@ -66,5 +80,18 @@ public class TourDaoTest {
         ArrayList<Tour> retTours = tourDao.getGuideTours("bana");
 
         assertTrue(testTours.equals(retTours));
+    }
+
+    @Test
+    public void getGuideToursTestFalse(){
+
+        ArrayList<Tour> testTours = new ArrayList<>();
+
+        testTours.add(new Tour("Obilazak restorana","Novi Sad", new Date()));
+        testTours.add(new Tour("Obilazak znamenitosti","Beograd",new Date()));
+
+        ArrayList<Tour> retTours = tourDao.getGuideTours("bana");
+
+        assertFalse(testTours.equals(retTours));
     }
 }
