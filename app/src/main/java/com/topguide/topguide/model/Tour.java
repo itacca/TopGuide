@@ -225,5 +225,9 @@ public class Tour implements Serializable {
         }
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        Tour tour = (Tour)obj;
+        return tour.getName().equals(this.getName());
+    }
 }
