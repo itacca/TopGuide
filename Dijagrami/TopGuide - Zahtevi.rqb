@@ -494,8 +494,8 @@ Shadow=0</a:DisplayPreferences>
 <c:DocumentViews>
 <o:RequirementsDocumentView Id="o5">
 <a:ObjectID>FD81B042-7DB4-4BA3-ADB1-AC5E43945110</a:ObjectID>
-<a:Name>DocumentView_1</a:Name>
-<a:Code>DocumentView_1</a:Code>
+<a:Name>Funkcionalni zahtevi</a:Name>
+<a:Code>Funkcionalni_zahtevi</a:Code>
 <a:CreationDate>1499688218</a:CreationDate>
 <a:Creator>test</a:Creator>
 <a:ModificationDate>1499688224</a:ModificationDate>
@@ -974,8 +974,8 @@ Shadow=0</a:DisplayPreferences>
 <c:DocumentViews>
 <o:RequirementsDocumentView Id="o29">
 <a:ObjectID>744AD6D2-A5FD-48DA-A69E-E478749673CC</a:ObjectID>
-<a:Name>DocumentView_1</a:Name>
-<a:Code>DocumentView_1</a:Code>
+<a:Name>Nefunkcionalni zahtevi</a:Name>
+<a:Code>Nefunkcionalni_zahtevi</a:Code>
 <a:CreationDate>1499688229</a:CreationDate>
 <a:Creator>test</a:Creator>
 <a:ModificationDate>1499688235</a:ModificationDate>
