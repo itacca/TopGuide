@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
@@ -76,6 +77,8 @@ public class CreateTourActivity extends AppCompatActivity {
                                     descriptionText.getText().toString(), app.getPersonDao().getCurrentGuide());
 
                             app.getPersonDao().getCurrentGuide().getTours().add(newTour);
+
+                            Toast.makeText(app, "Uspesno kreirana tura!", Toast.LENGTH_SHORT).show();
 
                             Intent next = new Intent();
                             setResult(MAIN_CODE, next);
