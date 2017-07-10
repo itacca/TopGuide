@@ -42,7 +42,8 @@
         android:id="@+id/passwordbuttonguide"
         android:layout_alignTop="@+id/text_view_guide1"
         android:layout_marginTop="20dp"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:inputType="textPassword"/>
 
     <TextView
         android:id="@+id/text_view_guide2"

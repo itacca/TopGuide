@@ -9,6 +9,8 @@ import com.topguide.topguide.model.User;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -93,5 +95,26 @@ public class TourDaoTest {
         ArrayList<Tour> retTours = tourDao.getGuideTours("bana");
 
         assertFalse(testTours.equals(retTours));
+    }
+
+    @Test
+    public void searchToursTestUnique(){
+
+        ArrayList<Tour> testTours = new ArrayList<>();
+
+        testTours.add(new Tour("Brza tura po gradu","Nis",new Date()));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d  = new Date();
+        try {
+            d = sdf.parse("21/12/2019");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        testTours.add(new Tour("Obilazak parkova","Nis",d));
+
+        ArrayList<Tour> retTours = tourDao.searchTours("Nis");
+
+        assertTrue(testTours.equals(retTours));
     }
 }
