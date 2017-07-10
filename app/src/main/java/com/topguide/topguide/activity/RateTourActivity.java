@@ -100,9 +100,9 @@ public class RateTourActivity extends AppCompatActivity {
 
                 currentTour.getComments().add(new Comment(commentTour.toString()));
 
-            Intent next = new Intent(RateTourActivity.this, DetailedTourActivity.class);
+            Intent next = new Intent();
             next.putExtra("tour", currentTour);
-            startActivityForResult(next, SHOW_TOUR_CODE);
+            setResult(SHOW_TOUR_CODE, next);
         }
     });
 

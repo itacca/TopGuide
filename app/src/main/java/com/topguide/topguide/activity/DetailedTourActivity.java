@@ -84,8 +84,7 @@ public class DetailedTourActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())){
-
+                if (currentTour.getState().ratingPossibilityCheck()){
                     if (signed){
 
                         Intent next = new Intent(DetailedTourActivity.this, RateTourActivity.class);
@@ -93,7 +92,6 @@ public class DetailedTourActivity extends AppCompatActivity {
                         startActivityForResult(next, RATE_TOUR_CODE);
                     }
                 }
-
                 else {
                     if (signed)
 
@@ -104,7 +102,9 @@ public class DetailedTourActivity extends AppCompatActivity {
                         app.getPersonDao().getCurrentTourist().signUpForTour(currentTour);
 
                 }
+
                 setUpButtonSettings();
+
             }
         });
     }
@@ -119,7 +119,6 @@ public class DetailedTourActivity extends AppCompatActivity {
 
     private void setUpButtonSettings() {
 
-        signUpButton.setClickable(false);
         signed = false;
 
         signUpButton.setText(currentTour.getState().askedForSignUpButton());
@@ -129,14 +128,12 @@ public class DetailedTourActivity extends AppCompatActivity {
                 if(currentTour.getName().equals(t.getName())){
 
                     signUpButton.setText("Submit rate(s)/comment");
-                    signUpButton.setClickable(true);
                     signed = true;
                     break;
                 }
             }
-        }
+        } else if(performSignUpCheck()) {
 
-        if(currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())){
             signed = false;
 
             signed = app.getPersonDao().getCurrentTourist().checkAttendenceOnTour(currentTour);
@@ -144,10 +141,8 @@ public class DetailedTourActivity extends AppCompatActivity {
             if (signed) {
                 signUpButton.setText("Sign out of tour");
             }
-
-            if (!performSignUpCheck()) {
-                signUpButton.setClickable(false);
-            }
+        } else {
+            signUpButton.setClickable(false);
         }
     }
 

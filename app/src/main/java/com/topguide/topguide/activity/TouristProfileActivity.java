@@ -307,7 +307,7 @@ public class TouristProfileActivity extends AppCompatActivity {
 
                 if(currentTourist.getUser().getRole() == User.Role.GUIDE){
 
-                    Intent intent = new Intent(context, GuideProfileActivity.class);
+                    Intent intent = new Intent(context, GuideActivity.class);
                     startActivityForResult(intent, PROFILE_GUIDE_CODE);
                 }
 

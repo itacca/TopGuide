@@ -1,5 +1,6 @@
 package com.topguide.topguide.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,10 @@ import java.util.ArrayList;
 
 public class TouristToursActivity extends AppCompatActivity {
 
+    private static final int DETAILED_TOUR_CODE = 215;
     private TopGuideApp app;
+    private Tour currentTour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,12 @@ public class TouristToursActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                currentTour = app.getTourDao().getTours().get(i);
 
+                Intent next = new Intent(TouristToursActivity.this, DetailedTourActivity.class);
+                next.putExtra("tour", currentTour);
+                startActivityForResult(next, DETAILED_TOUR_CODE);
             }
         });
     }
