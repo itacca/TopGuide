@@ -82,12 +82,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+        if(!textEmail.contains("@") || !textEmail.endsWith(".com")){
+            Toast.makeText(RegisterActivity.this,"Wrong email format entered.\nPlease enter a correct email!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         app.getPersonDao().writePerson(textUsername, textPassword, textName, textLastName, textEmail, 1);
 
         isSuccessful = true;
 
         setUpResult();
-        finish();
     }
 
     @Override
@@ -100,5 +104,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra("successful", isSuccessful);
         setResult(RESULT_OK, intent);
+        finish();
     }
 }
