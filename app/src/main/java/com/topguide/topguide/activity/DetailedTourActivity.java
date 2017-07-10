@@ -70,13 +70,6 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         tourStatus = (TextView) findViewById(R.id.tourstatus);
 
-        if (currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())) {
-            tourStatus.setText("Active");
-        } else if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())) {
-            tourStatus.setText("Suspended");
-        } else {
-            tourStatus.setText("Finished");
-        }
         tourDescription = (TextView) findViewById(R.id.tourdescription);
         tourDescription.setText(currentTour.getDescription());
 
@@ -129,12 +122,10 @@ public class DetailedTourActivity extends AppCompatActivity {
         signUpButton.setClickable(false);
         signed = false;
 
-        if (currentTour.getState().askedForStatus().equals(currentTour.getFINISHED())){
+        signUpButton.setText(currentTour.getState().askedForSignUpButton());
 
-            signUpButton.setText("Tour finished");
-
+        if (currentTour.getState().ratingPossibilityCheck()) {
             for(Tour t : app.getPersonDao().getCurrentTourist().getTours()){
-
                 if(currentTour.getName().equals(t.getName())){
 
                     signUpButton.setText("Submit rate(s)/comment");
@@ -144,13 +135,8 @@ public class DetailedTourActivity extends AppCompatActivity {
                 }
             }
         }
-        else if(currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())){
 
-            signUpButton.setText("Tour suspended, signup disabled!");
-        }
-        else{
-            signUpButton.setText("Sign up for tour");
-
+        if(currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())){
             signed = false;
 
             signed = app.getPersonDao().getCurrentTourist().checkAttendenceOnTour(currentTour);
@@ -163,10 +149,10 @@ public class DetailedTourActivity extends AppCompatActivity {
                 signUpButton.setClickable(false);
             }
         }
-
     }
 
     private boolean performSignUpCheck() {
+
         return currentTour.getState().signUpCheck();
     }
 }

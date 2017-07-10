@@ -27,4 +27,8 @@ public abstract class State implements Serializable {
     public abstract void dateCheckRequested();
 
     public abstract void stateChangeRequested();
+
+    public abstract String askedForSignUpButton();
+
+    public abstract boolean ratingPossibilityCheck();
 }

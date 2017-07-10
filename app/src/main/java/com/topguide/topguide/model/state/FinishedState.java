@@ -37,4 +37,14 @@ public class FinishedState extends State {
 
     }
 
+    @Override
+    public String askedForSignUpButton() {
+        return tour.returnSignUpLabelFinished();
+    }
+
+    @Override
+    public boolean ratingPossibilityCheck() {
+        return true;
+    }
+
 }

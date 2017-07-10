@@ -38,4 +38,14 @@ public class SuspendedState extends State {
     public void stateChangeRequested() {
         tour.changeState(new SuspendedState(tour));
     }
+
+    @Override
+    public String askedForSignUpButton() {
+        return tour.returnSignUpLabelSuspended();
+    }
+
+    @Override
+    public boolean ratingPossibilityCheck() {
+        return false;
+    }
 }

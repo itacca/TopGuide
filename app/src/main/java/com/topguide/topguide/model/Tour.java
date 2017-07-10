@@ -20,6 +20,9 @@ public class Tour implements Serializable {
     private static final String ACTIVE = "Active";
     private static final String FINISHED = "Finished";
     private static final String SUSPENDED = "Suspended";
+    private static final String LABEL_ACTIVE = "Sign up for tour";
+    private static final String LABEL_FINISHED = "Tour finished";
+    private static final String LABEL_SUSPENDED = "Tour suspended, sign up disabled!";
     private String name;
     private Place placeName;
     private Date startDate;
@@ -212,6 +215,18 @@ public class Tour implements Serializable {
 
     public void changeState(State newState) {
         state = newState;
+    }
+
+    public String returnSignUpLabelActive() {
+        return LABEL_ACTIVE;
+    }
+
+    public String returnSignUpLabelFinished() {
+        return LABEL_FINISHED;
+    }
+
+    public String returnSignUpLabelSuspended() {
+        return LABEL_SUSPENDED;
     }
 
     public static class Compare implements Comparator<Tour> {

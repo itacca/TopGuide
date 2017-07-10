@@ -37,4 +37,14 @@ public class ActiveState extends State {
     public void stateChangeRequested() {
         tour.changeState(new SuspendedState(tour));
     }
+
+    @Override
+    public String askedForSignUpButton() {
+        return tour.returnSignUpLabelActive();
+    }
+
+    @Override
+    public boolean ratingPossibilityCheck() {
+        return false;
+    }
 }
