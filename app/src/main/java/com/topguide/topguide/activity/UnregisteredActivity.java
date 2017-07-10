@@ -67,4 +67,9 @@ public class UnregisteredActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

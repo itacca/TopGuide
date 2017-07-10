@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        app.getPersonDao().writePerson(textUsername, textPassword, textName, textLastName, textEmail, 1);
+        app.getPersonDao().writePerson(textUsername, textPassword, textName, textLastName, textEmail, 0);
 
         isSuccessful = true;
 

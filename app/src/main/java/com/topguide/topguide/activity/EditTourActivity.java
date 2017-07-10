@@ -11,15 +11,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.topguide.topguide.R;
 import com.topguide.topguide.TopGuideApp;
 import com.topguide.topguide.model.Tour;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EditTourActivity extends AppCompatActivity {
 
     private static final String SUSPEND_TOUR = "Suspend tour";
     private static final String ACTIVATE_TOUR = "Activate tour";
+    private static final int BACK_CODE = 100;
     private TopGuideApp app;
     private TextView tourName;
     private TextView stateMessage;
@@ -30,6 +35,7 @@ public class EditTourActivity extends AppCompatActivity {
     private Button tourStatus;
     private Button tourDescription;
     private Button changeState;
+    private Tour currentTour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +48,23 @@ public class EditTourActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Tour currentTour = (Tour) this.getIntent().getExtras().getSerializable("tour");
+        currentTour = (Tour) this.getIntent().getExtras().getSerializable("tour");
 
         makeBinds();
-        setTourName(currentTour);
+        setTourName();
 
-        checkStartDate(currentTour);
+        checkStartDate();
 
-        setButtonLabels(currentTour);
-        setChangeStateLabel(currentTour);
-        setListeners(currentTour);
-
-
+        setButtonLabels();
+        setChangeStateLabel();
+        setListeners();
     }
 
-    private void checkStartDate(Tour currentTour) {
+    private void checkStartDate() {
         currentTour.getState().dateCheckRequested();
     }
 
-    private void setButtonLabels(Tour currentTour) {
+    private void setButtonLabels() {
         placeName.setText(currentTour.getPlaceName().getName());
         dateAndTime.setText(currentTour.getStartDate().toString());
         rating.setText(Double.toString(currentTour.getRate()));
@@ -68,7 +72,7 @@ public class EditTourActivity extends AppCompatActivity {
         tourStatus.setText(currentTour.getState().askedForStatus());
     }
 
-    private void setChangeStateLabel(Tour currentTour) {
+    private void setChangeStateLabel() {
         if (currentTour.getState().askedForStatus().equals(currentTour.getACTIVE())) {
             changeState.setText(SUSPEND_TOUR);
         } else if (currentTour.getState().askedForStatus().equals(currentTour.getSUSPENDED())) {
@@ -79,7 +83,7 @@ public class EditTourActivity extends AppCompatActivity {
         }
     }
 
-    private void setListeners(final Tour currentTour) {
+    private void setListeners() {
 
         final LayoutInflater inflater = this.getLayoutInflater();
 
@@ -123,13 +127,17 @@ public class EditTourActivity extends AppCompatActivity {
 
                 dialog.show();
 
+                setButtonLabels();
+
             }
         });
 
         dateAndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO :: mozda da se stavi kalendar pa da se izabere datum -- ne mora
+                newDate(inflater, context, currentTour);
+
+                setButtonLabels();
             }
         });
 
@@ -180,25 +188,126 @@ public class EditTourActivity extends AppCompatActivity {
 
                 dialog.show();
 
+                setButtonLabels();
+
             }
         });
 
         tourDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                newDescription(inflater, context, currentTour);
 
+                setButtonLabels();
             }
         });
         changeState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentTour.getState().stateChangeRequested();
-                setChangeStateLabel(currentTour);
+                setChangeStateLabel();
             }
         });
     }
 
-    private void setTourName(Tour currentTour) {
+    private void newDescription(LayoutInflater inflater, Context context, Tour currentTour) {
+
+        final View dialogView = inflater.inflate(R.layout.dialog_change_data, null);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        dialogBuilder.setTitle("Change description");
+        dialogBuilder.setView(dialogView);
+
+        final TextView text1 = (TextView) dialogView.findViewById(R.id.text1_id);
+
+        text1.setText("\nEnter new description: ");
+
+        final EditText newDescription = (EditText) dialogView.findViewById(R.id.dialog_new_info);
+
+        newDescription.setHint(currentTour.getDescription());
+
+        final Tour t = currentTour;
+
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String input = newDescription.getText().toString();
+                if (!input.isEmpty()) {
+                    t.setDescription(input);
+                    tourDescription.setText(input);
+                }
+            }
+        });
+
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog dialog = dialogBuilder.create();
+
+        dialog.show();
+
+    }
+
+    private void newDate(LayoutInflater inflater, final Context context, final Tour currentTour) {
+        final View dialogView = inflater.inflate(R.layout.dialog_change_data, null);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        dialogBuilder.setTitle("Change date");
+        dialogBuilder.setView(dialogView);
+
+        final TextView text1 = (TextView) dialogView.findViewById(R.id.text1_id);
+
+        text1.setText("\nEnter new start date: ");
+
+        final EditText newDate = (EditText) dialogView.findViewById(R.id.dialog_new_info);
+
+        final SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy. HH:mm");
+
+        newDate.setHint(formatter.format(currentTour.getStartDate()));
+
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String input = newDate.getText().toString();
+                CharSequence textMessage = "Error: Date and time error detected, wrong input! \nPlease insert correct date and time of tour!";
+                CharSequence errorMessage = "Error: Date and time error detected, wrong input format! \nPlease insert date and time in correct format!";
+                if (!input.isEmpty()) {
+                    try {
+
+                        Date inputDate = formatter.parse(input);
+                        Date now = new Date();
+                        if (inputDate.before(now))
+
+                            Toast.makeText(context, textMessage, Toast.LENGTH_SHORT).show();
+
+                        else {
+                            currentTour.setStartDate(inputDate);
+
+                        }
+                    } catch (Exception e) {
+
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog dialog = dialogBuilder.create();
+
+        dialog.show();
+
+    }
+
+    private void setTourName() {
         tourName.setText(currentTour.getName());
     }
 
@@ -214,9 +323,11 @@ public class EditTourActivity extends AppCompatActivity {
         changeState = (Button) findViewById(R.id.edit_change_state);
     }
 
-
-    /**
-     *  TODO : treba zavrsiti dijaloge, treba uvezati turu u listu u dao ili je vratiit sa setResult, potrebno testirati
-     *
-     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("tour", currentTour);
+        setResult(BACK_CODE, intent);
+        super.onBackPressed();
+    }
 }

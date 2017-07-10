@@ -299,7 +299,7 @@ public class GuideProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, TouristProfileActivity.class);
+                Intent intent = new Intent(context, TouristActivity.class);
                 startActivityForResult(intent, TOURIST_PROFILE_CODE);
             }
         });

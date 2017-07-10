@@ -95,5 +95,6 @@ public class PersonDao {
         Tourist t = new Tourist(textName, textLastName, textEmail, new User(textUsername, textPassword, role));
         tourists.add(t);
         userDao.addUser(t.getUser());
+        userDao.setCurrentUser(t.getUser());
     }
 }

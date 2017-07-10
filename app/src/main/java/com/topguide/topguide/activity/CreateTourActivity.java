@@ -77,8 +77,8 @@ public class CreateTourActivity extends AppCompatActivity {
 
                             app.getPersonDao().getCurrentGuide().getTours().add(newTour);
 
-                            Intent next = new Intent(CreateTourActivity.this, GuideActivity.class);
-                            startActivityForResult(next, MAIN_CODE);
+                            Intent next = new Intent();
+                            setResult(MAIN_CODE, next);
                         }
                     } catch (Exception e) {
 

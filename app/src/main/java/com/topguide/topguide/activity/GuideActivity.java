@@ -113,7 +113,7 @@ public class GuideActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                currentTour = app.getTourDao().getTours().get(i);
+            currentTour = app.getTourDao().getTours().get(i);
 
             if(app.getUserDao().getCurrentUser().getUsername().equals(currentTour.getGuide().getUser().getUsername())) {
                 Intent next = new Intent(context, EditTourActivity.class);
@@ -128,5 +128,10 @@ public class GuideActivity extends AppCompatActivity {
             }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

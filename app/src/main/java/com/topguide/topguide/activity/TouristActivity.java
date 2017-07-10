@@ -88,4 +88,9 @@ public class TouristActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        
+    }
 }

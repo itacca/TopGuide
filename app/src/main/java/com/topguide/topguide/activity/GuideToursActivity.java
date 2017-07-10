@@ -23,6 +23,7 @@ public class GuideToursActivity extends AppCompatActivity implements AdapterView
 
     private static final int EDIT_TOURS_CODE = 99;
     private TopGuideApp app;
+    private Tour currentTour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +49,19 @@ public class GuideToursActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Tour currentTour = app.getTourDao().getTours().get(i);
+        currentTour = app.getTourDao().getTours().get(i);
 
         Intent intent = new Intent(this, EditTourActivity.class);
         intent.putExtra("tour", currentTour);
         startActivityForResult(intent, EDIT_TOURS_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == EDIT_TOURS_CODE) {
+            if (resultCode == RESULT_OK) {
+                currentTour = (Tour) data.getSerializableExtra("tour");
+            }
+        }
     }
 }
