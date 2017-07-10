@@ -113,7 +113,7 @@ public class TourDaoTest {
 
         testTours.add(new Tour("Obilazak parkova","Nis",d));
 
-        ArrayList<Tour> retTours = tourDao.searchTours("Nis");
+        ArrayList<Tour> retTours = tourDao.searchTours("nis");
 
         assertTrue(testTours.equals(retTours));
     }

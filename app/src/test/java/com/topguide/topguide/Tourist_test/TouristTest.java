@@ -4,9 +4,11 @@ import com.topguide.topguide.model.Tour;
 import com.topguide.topguide.model.Tourist;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -23,10 +25,10 @@ public class TouristTest {
     private static ArrayList<Tour> tours;
 
     @Before
-    public void setUpClass(){
+    public void setUp(){
 
         tourist = new Tourist();
-        tour = new Tour();
+        tour = new Tour("Obilazak restorana","Novi Sad", new Date());
         tours = new ArrayList<>();
     }
 
@@ -53,7 +55,7 @@ public class TouristTest {
         tourist.getTours().add(tour);
         tourist.signOutOfTour(tour);
 
-        assertEquals(tourist.getTours(), tours);
+        assertTrue(tourist.getTours().equals(tours));
     }
 
     @Test
@@ -63,7 +65,7 @@ public class TouristTest {
         tours.add(tour);
         tourist.signOutOfTour(tour);
 
-        assertNotEquals(tourist.getTours(), tours);
+        assertFalse(tourist.getTours().equals(tours));
     }
 
     @Test
