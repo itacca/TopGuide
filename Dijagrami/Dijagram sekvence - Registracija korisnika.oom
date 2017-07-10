@@ -1417,7 +1417,7 @@ Shadow=0</a:DisplayPreferences>
 <o:MessageSymbol Id="o7">
 <a:ModificationDate>1499686749</a:ModificationDate>
 <a:CenterTextOffset>(-525, 221)</a:CenterTextOffset>
-<a:Rect>((-5512,8025), (5439,9552))</a:Rect>
+<a:Rect>((-5512,8025), (5439,9498))</a:Rect>
 <a:ListOfPoints>((-5512,8325),(5439,8325))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -1440,7 +1440,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:MessageSymbol Id="o11">
 <a:ModificationDate>1499686749</a:ModificationDate>
 <a:CenterTextOffset>(-675, 1534)</a:CenterTextOffset>
-<a:Rect>((5364,3875), (11364,6956))</a:Rect>
+<a:Rect>((5364,3875), (11364,6902))</a:Rect>
 <a:ListOfPoints>((5439,5775),(9039,5775),(9039,4175),(5439,4175))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
