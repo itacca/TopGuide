@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 
 public class DetailedTourActivity extends AppCompatActivity {
 
+    private static final int TOURIST_TOUR_BACK_CODE = 20;
     private Tour currentTour;
     private TopGuideApp app;
     private TextView tourName;
@@ -150,4 +151,5 @@ public class DetailedTourActivity extends AppCompatActivity {
 
         return currentTour.getState().signUpCheck();
     }
+
 }

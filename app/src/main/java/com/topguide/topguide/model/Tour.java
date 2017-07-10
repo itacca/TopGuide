@@ -63,7 +63,7 @@ public class Tour implements Serializable {
         this.guide = new Guide();
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.state = new ActiveState();
+        this.state = new ActiveState(this);
     }
 
 
@@ -77,7 +77,7 @@ public class Tour implements Serializable {
         this.guide = guide;
         this.rates = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.state = new ActiveState();
+        this.state = new ActiveState(this);
     }
 
 
@@ -173,7 +173,7 @@ public class Tour implements Serializable {
         return SUSPENDED;
     }
 
-    public void calculateRate(Rate rate){
+    public double calculateRate(Rate rate){
 
         this.rates.add(rate);
 
@@ -183,6 +183,7 @@ public class Tour implements Serializable {
             sum = sum + i.getRate();
 
         this.rate = sum / this.rates.size();
+        return this.rate;
     }
 
     public boolean returnPositiveStatus() {
